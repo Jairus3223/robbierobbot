@@ -17,7 +17,7 @@ double max_energy;
 };
 class Arm
 {
-	double max_power
+	double max_power;
 };
 class Locomotor
 {
@@ -61,7 +61,7 @@ class Sales_associate
 string name;
 	int employee_number;
 };
-class customer
+class Customer
 {
 	string name;
 	int customer_number;
@@ -76,7 +76,7 @@ class Order
 	string date;
 Customer customer;
 Sales_associate sales_associate;
-Robot_model Robot_model;
+Robot_model robot_model;
 int status;
 public:
 double robot_cost();
@@ -87,15 +87,15 @@ double extended_price ();
 class Shop
 {
 	Order orders;
-	Robot_parts robot_parts;
+	Robot_part robot_parts;
 	Robot_model robot_models;
-	 Customer customers;
-	 Sales_associate sales_associate;
+	vector <Customer> customers;
+	vector <Sales_associate> sales_associate;
 	public:
 	 void create_new_robot_part();
 	 void create_new_robot_model();
-	 void create_new_customers();
-	 void create_new_sales_associate();
+	 void create_new_customers(Customer cus);
+	 void create_new_sales_associate(Sales_associate Sal);
 	 void create_new_order();
 	 void save(string filename);
 	 void open(string filename);
@@ -115,28 +115,19 @@ void Shop::create_new_robot_model()
 	
 }
 
-void Shop::create_new_customers()
+void Shop::create_new_customers(Customer cus)
 {
-	cout<<"Please Enter Customer's Name";
-	cin>> customers.name;
-	cout<<"Phone Number?";
-	cin>>customers.phone_number;
-	cout<<"Email?"
-	cin>>customers.email_address;
-	cout<<" Customer number";
-	cin>>customers.customer_number;
+
+customers. push_back(cus);
 	
 	
 	
 	
 }
-void Shop:: create_new_associate()
+void Shop:: create_new_sales_associate(Sales_associate sal)
 {
-	cout<<"Please Enter Sales Associate name";
-	cin>> sales_associate.name;
-	cout<<"ID number?";
-	cin>>sales_associate.phone_number;
-	
+
+	sales_associate.push_back(sal);
 	
 	
 	
@@ -151,7 +142,7 @@ void Shop:: create_new_order()
 	
 }
 
-void Shop:: Save(string filename)
+void Shop:: save(string filename)
 {
 	
 	
@@ -159,7 +150,7 @@ void Shop:: Save(string filename)
 	
 }
 
-void Shop:: Load (string filename)
+void Shop:: open (string filename)
 {
 	
 	
@@ -170,6 +161,7 @@ void Shop:: Load (string filename)
 
 class View
 {
+public:
 	string get_menu();
 	string get_list_order();
 	string get_list_customers();
@@ -180,7 +172,7 @@ class View
 string View::get_menu()
 {
 	int i=0;
-	vector <string> menu_options= "Create new robot parts.","Create new robot Model.","Create a new Customer.","Create a new Sales Associate","Create a new order","List orders","List Customers","List Sales Associate", "List Robot Models","List robot parts","Save","Load","Quit";
+	 string menu_options[]= {"Create new robot parts.","Create new robot Model.","Create a new Customer.","Create a new Sales Associate","Create a new order","List orders","List Customers","List Sales Associate", "List Robot Models","List robot parts","Save","Load","Quit"};
 	while (i!=13)
 	{
 		
@@ -196,6 +188,7 @@ string View::get_menu()
 		}
 	
 }
+}
 
 class Controller
 {
@@ -205,6 +198,7 @@ void exectcom(int com);
 View view;
 Shop shop;
 };
+
 void Controller::cmloop()
 {
 	int ind = -1;
@@ -223,7 +217,7 @@ void Controller::exectcom(int command)
 	{
 		return;
 	}
-	else if(command ==1
+	else if(command ==1)
 	{
 		
 		shop.create_new_robot_part();
@@ -236,15 +230,30 @@ void Controller::exectcom(int command)
 	}
 	else if (command==3)
 	{
-		
-		shop.create_new_customers();
-		
+		string name;
+string number;
+string email;
+int numb;
+		cout<<"Please Enter Customer's Name";
+	cin>> name;
+	cout<<"Phone Number?";
+	cin>>number;
+	cout<<"Email?";
+	cin>>email;
+	cout<<" Customer number";
+	cin>>numb;
+		shop.create_new_customers(name,numb,number,email);
 	}
 	
 	else if (command==4)
-	{
+	{int id;
+string name;
+	cout<<"Please Enter Sales Associate name";
+	cin>> name;
+	cout<<"ID number?";
+	cin>>id;
 		
-		shop.create_new_associate();
+		shop.create_new_sales_associate(name,id);
 		
 	}
 	else if (command==5)
@@ -296,9 +305,9 @@ void Controller::exectcom(int command)
 	}
 	
 	
+
+
 }
-
-
 int main()
 {
 	Controller control;
