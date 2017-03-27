@@ -86,9 +86,9 @@ double extended_price ();
 
 class Shop
 {
-	Order orders;
-	Robot_part robot_parts;
-	Robot_model robot_models;
+	vector <Order> orders;
+	vector <Robot_part> robot_parts;
+	vector <Robot_model> robot_models;
 	vector <Customer> customers;
 	vector <Sales_associate> sales_associate;
 	public:
@@ -242,6 +242,7 @@ int numb;
 	cin>>email;
 	cout<<" Customer number";
 	cin>>numb;
+
 		shop.create_new_customers(name,numb,number,email);
 	}
 	
@@ -258,7 +259,6 @@ string name;
 	}
 	else if (command==5)
 	{
-		
 		
 		shop.create_new_order();
 	}
