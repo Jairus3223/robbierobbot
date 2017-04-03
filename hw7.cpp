@@ -137,7 +137,7 @@ void Shop:: create_new_sales_associate(Sales_associate sal)
 void Shop:: create_new_order()
 {
 	
-	
+	get_list_associates
 	
 	
 }
@@ -163,9 +163,9 @@ class View
 {
 public:
 	string get_menu();
-	string get_list_order();
-	string get_list_customers();
-	string get_list_associates();
+	string get_list_order(Shop shop);
+	string get_list_customers(Shop shop);
+	string get_list_associates(Shop shop);
 	string get_list_robotmodel();
 	string get_list_parts();
 };
@@ -200,8 +200,22 @@ int i;
 	   {
 	while(shop.orders[i]!="NULL")
 	{
-		cout<<"("<<i<<") "<<shop.orders[i];	
+		cout<<"("<<i<<") "<<shop.orders[i];
+		i++
 }	
+	   }
+string View::get_list_associates(Shop shop)
+	   {
+		   int i;
+		 while(shop.sales_associate[i]!=NULL)
+		 {cout<<"("<<shop.sales_associate[i]<<")";
+		  i++;
+		 }
+		   
+		   
+		   
+		   
+		   
 	   }
 class Controller
 {
