@@ -92,7 +92,7 @@ class Shop
 	vector <Customer> customers;
 	vector <Sales_associate> sales_associate;
 	public:
-	 void create_new_robot_part();
+	 void create_new_robot_part(Robot_part);
 	 void create_new_robot_model();
 	 void create_new_customers(Customer cus);
 	 void create_new_sales_associate(Sales_associate Sal);
@@ -104,7 +104,7 @@ class Shop
 }; 
 void Shop::create_new_robot_part()
 {
-	
+	robot_part.push_back(pts);
 	
 }
 
@@ -246,8 +246,22 @@ void Controller::exectcom(int command)
 	}
 	else if(command ==1)
 	{
-		
-		shop.create_new_robot_part();
+		string name_pt;
+	int model_number_pt;
+	double cost_pt;
+	string description_pt;
+	string image_filename_pt;
+	cout<<"Name";
+		cin>>name_pt;
+		cout<<"Model Number";
+		cin>>model_number_pt;
+		cout<<"Cost";
+		cin>>cost_pt;
+		cout<<"Description";
+		cin>>description_pt;
+		cout<<"Image filename";
+		cin>>image_filename_pt;
+		shop.create_new_robot_part(name_pt,model_number_pt,cost_pt,description_pt,image_filename_pt);
 	}
 	else if (command==2)
 	{
