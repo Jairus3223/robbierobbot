@@ -137,7 +137,7 @@ void Shop:: create_new_sales_associate(Sales_associate sal)
 void Shop:: create_new_order()
 {
 	
-	get_list_associates
+	get_list_associates(shop);
 	
 	
 }
