@@ -189,7 +189,20 @@ string View::get_menu()
 	
 }
 }
-
+string View::get_list_order(Shop shop)
+{
+int i;
+	if(shop.order[0]=="NULL"
+	   {
+	cout<<"There are no Current Orders";	   
+	   }
+	 else
+	   {
+	while(shop.orders[i]!="NULL")
+	{
+		cout<<"("<<i<<") "<<shop.orders[i];	
+}	
+	   }
 class Controller
 {
 public:
@@ -264,7 +277,7 @@ string name;
 	}
 	else if(command==6)
 	{
-		
+		view.get_list_order(shop);
 		
 	}
 	else if (command==7)
