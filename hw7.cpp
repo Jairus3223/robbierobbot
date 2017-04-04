@@ -315,7 +315,7 @@ string name;
 		get_list_associates(shop);
 		shop.create_new_order();
 	}
-	else if(command==6)
+	/*else if(command==6)
 	{
 		view.get_list_order(shop);
 		
@@ -352,6 +352,7 @@ string name;
 		
 		
 	}
+	*/
 	else
 	{
 		cout<<"Invalid Command";
