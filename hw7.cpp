@@ -92,7 +92,7 @@ class Shop
 	vector <Customer> customers;
 	vector <Sales_associate> sales_associate;
 	public:
-	 void create_new_robot_part(Robot_part);
+	 void create_new_robot_part(Robot_part pts);
 	 void create_new_robot_model();
 	 void create_new_customers(Customer cus);
 	 void create_new_sales_associate(Sales_associate Sal);
@@ -102,7 +102,7 @@ class Shop
 
 
 }; 
-void Shop::create_new_robot_part()
+void Shop::create_new_robot_part(Robot_part pts)
 {
 	robot_part.push_back(pts);
 	
@@ -192,7 +192,7 @@ string View::get_menu()
 string View::get_list_order(Shop shop)
 {
 int i;
-	if(shop.order[0]=="NULL"
+	if(shop.orders[0]=="NULL")
 	   {
 	cout<<"There are no Current Orders";	   
 	   }
