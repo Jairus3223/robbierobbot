@@ -102,9 +102,17 @@ class Shop
 
 
 }; 
-void Shop::create_new_robot_part(Robot_part pts)
+void Shop::create_new_robot_part(string nam,int mod, double cos,string de,string file,)
 {
-	robot_part.push_back(pts);
+	Robot_part pts;
+	pts.name=nam;
+ pts.model_number=mod;
+ pts.cost=cos;
+ pts.description=de;
+ pts.file_name=file;
+	
+	
+	robot_parts.push_back(pts);
 	
 }
 
@@ -115,9 +123,13 @@ void Shop::create_new_robot_model()
 	
 }
 
-void Shop::create_new_customers(Customer cus)
+void Shop::create_new_customers(string name,int numb,string phone,string email)
 {
-
+Customer cus;
+	cus.name=name;
+	cus.customer_number=numb;
+	cus.phone_number=phone;
+	cus.email_address=email;
 customers. push_back(cus);
 	
 	
@@ -134,10 +146,10 @@ void Shop:: create_new_sales_associate(Sales_associate sal)
 	
 }
 
-void Shop:: create_new_order()
+void Shop:: create_new_order(Shop shop)
 {
 	
-	get_list_associates(shop);
+	
 	
 	
 }
@@ -186,10 +198,10 @@ string View::get_menu()
 		
 		cout<<"( "<<i<<") "<<menu_options[i];
 		}
-	
+	i++;
 }
 }
-string View::get_list_order(Shop shop)
+/*string View::get_list_order(Shop shop)
 {
 int i;
 	if(shop.orders[0]=="NULL")
@@ -214,7 +226,7 @@ string View::get_list_associates(Shop shop)
 		   
 		   
 		   
-		   
+		*/   
 		   
 	   }
 class Controller
@@ -300,7 +312,7 @@ string name;
 	}
 	else if (command==5)
 	{
-		
+		get_list_associates(shop);
 		shop.create_new_order();
 	}
 	else if(command==6)
