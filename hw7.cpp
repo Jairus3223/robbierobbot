@@ -200,7 +200,13 @@ void Shop:: create_new_order(Shop shop)
 
 void Shop:: save(string filename)
 {
+	ofstream file;
+	file.open(filename);
 	
+	
+	
+	
+	file.close();
 	
 	
 	
