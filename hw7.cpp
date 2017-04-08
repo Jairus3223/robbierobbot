@@ -2,33 +2,6 @@
 #include <vector>
 #include <string>
 using namespace std;
-class Torso
-{
-int battery_comparments;
-int max_arms;
-};
-class Battery
-{
-double power_available;
-double max_energy;
-
-
-
-};
-class Arm
-{
-	double max_power;
-};
-class Locomotor
-{
-	double max_power;
-	
-	
-};
-class Head
-{
-	double power;
-};
 class Robot_part
 {
 	protected:
@@ -38,7 +11,37 @@ class Robot_part
 	string description;
 	string image_filename;
 	
+};
+
+class Torso
+{
+int battery_comparments;
+int max_arms;
+Robot_part torso;
+};
+class Battery
+{
+double power_available;
+double max_energy;
+Robot_part battery;
+
+
+};
+class Arm
+{
+	double max_power;
+	Robot_part arm;
+};
+class Locomotor
+{
+	double max_power;
+	Robot_part locomotor;
 	
+};
+class Head
+{
+	double power;
+	Robot_part head;
 };
 
 class Robot_model
@@ -55,12 +58,15 @@ class Robot_model
 	double max_speed();
 	double max_batter_life();
 };
+
+
 class Sales_associate
 {
-	
 string name;
-	int employee_number;
+int employee_number;
 };
+
+
 class Customer
 {
 	string name;
@@ -72,8 +78,8 @@ class Customer
 	
 class Order
 {
-	int order_number;
-	string date;
+int order_number;
+string date;
 Customer customer;
 Sales_associate sales_associate;
 Robot_model robot_model;
@@ -87,9 +93,13 @@ double extended_price ();
 class Shop
 {
 	vector <Order> orders;
-	vector <Robot_part> robot_parts;
+	vector <Arm> arm_parts;
+	vector <Torso> torso_part;
+	vector<Locomotor> locomotor_part;
+	vector <Battery> battery_part;
 	vector <Robot_model> robot_models;
 	vector <Customer> customers;
+	vector <Head> head_part;
 	vector <Sales_associate> sales_associate;
 	public:
 	 void create_new_robot_part()
@@ -147,9 +157,15 @@ int numb;
 		 
 	 }
 		 
-		 ;
+	
 	 void create_new_sales_associate(Sales_associate Sal);
-	 void create_new_order();
+	 void create_new_order()	 
+	 {
+		 
+		 
+		 
+		 
+	 };
 	 void save(string filename);
 	 void open(string filename);
 
