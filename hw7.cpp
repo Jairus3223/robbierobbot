@@ -92,19 +92,10 @@ class Shop
 	vector <Customer> customers;
 	vector <Sales_associate> sales_associate;
 	public:
-	 void create_new_robot_part(Robot_part pts);
-	 void create_new_robot_model();
-	 void create_new_customers(Customer cus);
-	 void create_new_sales_associate(Sales_associate Sal);
-	 void create_new_order();
-	 void save(string filename);
-	 void open(string filename);
-
-
-}; 
-void Shop::create_new_robot_part()
-{
-		string name_pt;
+	 void create_new_robot_part()
+	 {
+		 
+		 	string name_pt;
 	int model_number_pt;
 	double cost_pt;
 	string description_pt;
@@ -120,11 +111,50 @@ void Shop::create_new_robot_part()
 		cout<<"Image filename";
 		cin>>image_filename_pt;
 	Robot_pats pts;
+		 
+		 pts.name=name_pt;
+		 pts.model_number=model_number;
+		 pts.cost=cost_pt;
+		 pts.description=description_pt;
+		 pts.image_filename=image_filename_pt;
+		 robot_parts.push_back(pts);
+		 
 	
-	
-	robot_parts.push_back(pts);
-	
-}
+		 
+		 
+	 }
+	 void create_new_robot_model();
+	 void create_new_customers()
+	 {
+		 Customer cus;
+		 	string name;
+string number;
+string email;
+int numb;
+		cout<<"Please Enter Customer's Name";
+	cin>> name;
+	cout<<"Phone Number?";
+	cin>>number;
+	cout<<"Email?";
+	cin>>email;
+	cout<<" Customer number";
+	cin>>numb;
+		cus.name=name;
+	cus.customer_number=numb;
+	cus.phone_number=number;
+	cus.email_address=email;
+		 customers.push_back(cus);
+		 
+	 }
+		 
+		 ;
+	 void create_new_sales_associate(Sales_associate Sal);
+	 void create_new_order();
+	 void save(string filename);
+	 void open(string filename);
+
+
+}; 
 
 void Shop::create_new_robot_model()
 {
@@ -133,19 +163,7 @@ void Shop::create_new_robot_model()
 	
 }
 
-void Shop::create_new_customers(string name,int numb,string phone,string email)
-{
-Customer cus;
-	cus.name=name;
-	cus.customer_number=numb;
-	cus.phone_number=phone;
-	cus.email_address=email;
-customers. push_back(cus);
-	
-	
-	
-	
-}
+
 void Shop:: create_new_sales_associate(Sales_associate sal)
 {
 
@@ -293,20 +311,9 @@ void Controller::exectcom(int command)
 	}
 	else if (command==3)
 	{
-		string name;
-string number;
-string email;
-int numb;
-		cout<<"Please Enter Customer's Name";
-	cin>> name;
-	cout<<"Phone Number?";
-	cin>>number;
-	cout<<"Email?";
-	cin>>email;
-	cout<<" Customer number";
-	cin>>numb;
 
-		shop.create_new_customers(name,numb,number,email);
+
+		shop.create_new_customers();
 	}
 	
 	else if (command==4)
