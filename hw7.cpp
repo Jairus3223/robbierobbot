@@ -9,7 +9,7 @@ class Robot_part
 	int model_number;
 	double cost;
 	string description;
-	string image_filename;
+	//string image_filename;
 	
 };
 
