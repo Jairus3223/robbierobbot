@@ -102,14 +102,24 @@ class Shop
 
 
 }; 
-void Shop::create_new_robot_part(string nam,int mod, double cos,string de,string file,)
+void Shop::create_new_robot_part()
 {
-	Robot_part pts;
-	pts.name=nam;
- pts.model_number=mod;
- pts.cost=cos;
- pts.description=de;
- pts.file_name=file;
+		string name_pt;
+	int model_number_pt;
+	double cost_pt;
+	string description_pt;
+	string image_filename_pt;
+	cout<<"Name";
+		cin>>name_pt;
+		cout<<"Model Number";
+		cin>>model_number_pt;
+		cout<<"Cost";
+		cin>>cost_pt;
+		cout<<"Description";
+		cin>>description_pt;
+		cout<<"Image filename";
+		cin>>image_filename_pt;
+	Robot_pats pts;
 	
 	
 	robot_parts.push_back(pts);
