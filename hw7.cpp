@@ -64,8 +64,21 @@ class Sales_associate
 {
 string name;
 int employee_number;
+public:
+void set_variables();
 };
-
+void Sales_associate:: set_variables()
+{
+int id;
+string names;
+	cout<<"Please Enter Sales Associate name";
+	cin>> names;
+	cout<<"ID number?";
+	cin>>id;
+	name=names;
+	employee_number=id;
+	
+}
 
 class Customer
 {
@@ -73,8 +86,31 @@ class Customer
 	int customer_number;
 	string phone_number;
 	string email_address;
+public:
+	void set_variables();
 };
 	
+
+void Customer::set_variables()
+{
+string nam;
+string number;
+string email;
+int numb;
+cout<<"Please Enter Customer's Name";
+cin>> name;
+cout<<"Phone Number?";
+cin>>number;
+cout<<"Email?";
+cin>>email;
+cout<<" Customer number";
+cin>>numb;
+
+	name=nam;
+	customer_number=number;
+	email_address=email;
+	customer_number=numb;	
+}
 	
 class Order
 {
@@ -87,6 +123,7 @@ int status;
 public:
 double robot_cost();
 double extended_price ();
+void set_variables()
 };
 
 
@@ -134,31 +171,9 @@ class Shop
 		 
 	 }
 	 void create_new_robot_model();
-	 void create_new_customers()
-	 {
-		 Customer cus;
-		 	string name;
-string number;
-string email;
-int numb;
-		cout<<"Please Enter Customer's Name";
-	cin>> name;
-	cout<<"Phone Number?";
-	cin>>number;
-	cout<<"Email?";
-	cin>>email;
-	cout<<" Customer number";
-	cin>>numb;
-		cus.name=name;
-	cus.customer_number=numb;
-	cus.phone_number=number;
-	cus.email_address=email;
-		 customers.push_back(cus);
-		 
-	 }
-		 
+	 void create_new_customers();
 	
-	 void create_new_sales_associate(Sales_associate Sal);
+	 void create_new_sales_associate();
 	 void create_new_order()	 
 	 {
 		 
@@ -180,9 +195,10 @@ void Shop::create_new_robot_model()
 }
 
 
-void Shop:: create_new_sales_associate(Sales_associate sal)
+void Shop:: create_new_sales_associate()
 {
-
+Sales_associate sal;
+	sal.set_variables();
 	sales_associate.push_back(sal);
 	
 	
@@ -220,14 +236,23 @@ void Shop:: open (string filename)
 	
 }
 
+void Shop::create_new_customers()
+{
+	 Customer cus;
+		 cus.set_variables();
+		 customers.push_back(cus);
+		 
+	
+	
+}
 
 class View
 {
 public:
 	string get_menu();
-	string get_list_order(Shop shop);
+	//string get_list_order(Shop shop);
 	string get_list_customers(Shop shop);
-	string get_list_associates(Shop shop);
+	//string get_list_associates(Shop shop);
 	string get_list_robotmodel();
 	string get_list_parts();
 };
@@ -339,14 +364,9 @@ void Controller::exectcom(int command)
 	}
 	
 	else if (command==4)
-	{int id;
-string name;
-	cout<<"Please Enter Sales Associate name";
-	cin>> name;
-	cout<<"ID number?";
-	cin>>id;
+	{
 		
-		shop.create_new_sales_associate(name,id);
+		shop.create_new_sales_associate();
 		
 	}
 	else if (command==5)
