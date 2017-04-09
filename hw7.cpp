@@ -10,8 +10,35 @@ class Robot_part
 	double cost;
 	string description;
 	//string image_filename;
-	
+	public:
+	void change_variables();
 };
+
+void Robot_part::change_variables()
+{
+    string name_pt;
+    	int model_number_pt;
+	double cost_pt;
+	string description_pt;
+	string image_filename_pt;
+	cout<<"Name";
+		cin>>name_pt;
+		cout<<"Model Number";
+		cin>>model_number_pt;
+		cout<<"Cost";
+		cin>>cost_pt;
+		cout<<"Description";
+		cin>>description_pt;
+		cout<<"Image filename";
+		cin>>image_filename_pt;
+		
+	 name=name_pt;
+		model_number=model_number;
+	cost=cost_pt;
+		description=description_pt;
+	//	image_filename=image_filename_pt;
+		
+}
 
 class Torso
 {
@@ -107,7 +134,7 @@ cout<<" Customer number";
 cin>>numb;
 
 	name=nam;
-	customer_number=number;
+	phone_number=number;
 	email_address=email;
 	customer_number=numb;	
 }
@@ -123,7 +150,7 @@ int status;
 public:
 double robot_cost();
 double extended_price ();
-void set_variables()
+void set_variables();
 };
 
 
@@ -139,48 +166,19 @@ class Shop
 	vector <Head> head_part;
 	vector <Sales_associate> sales_associate;
 	public:
-	 void create_new_robot_part()
-	 {
-		 
-		 	string name_pt;
-	int model_number_pt;
-	double cost_pt;
-	string description_pt;
-	string image_filename_pt;
-	cout<<"Name";
-		cin>>name_pt;
-		cout<<"Model Number";
-		cin>>model_number_pt;
-		cout<<"Cost";
-		cin>>cost_pt;
-		cout<<"Description";
-		cin>>description_pt;
-		cout<<"Image filename";
-		cin>>image_filename_pt;
-	Robot_pats pts;
-		 
-		 pts.name=name_pt;
-		 pts.model_number=model_number;
-		 pts.cost=cost_pt;
-		 pts.description=description_pt;
-		 pts.image_filename=image_filename_pt;
-		 robot_parts.push_back(pts);
+	 void create_new_robot_part();
+	 
 		 
 	
-		 
-		 
-	 }
+		 //Need to implement the individual parts
+		  
+
 	 void create_new_robot_model();
 	 void create_new_customers();
 	
 	 void create_new_sales_associate();
-	 void create_new_order()	 
-	 {
-		 
-		 
-		 
-		 
-	 };
+	 void create_new_order(Shop shop);	 
+
 	 void save(string filename);
 	 void open(string filename);
 
@@ -216,14 +214,10 @@ void Shop:: create_new_order(Shop shop)
 
 void Shop:: save(string filename)
 {
-	ofstream file;
-	file.open(filename);
+
 	
 	
-	
-	
-	file.close();
-	
+
 	
 	
 }
@@ -245,34 +239,36 @@ void Shop::create_new_customers()
 	
 	
 }
+void Shop::create_new_robot_part()
+{
+    
+ Robot_part pts;
+		 pts.change_variables();   
+    
+}
 
 class View
 {
 public:
-	string get_menu();
+	void get_menu();
 	//string get_list_order(Shop shop);
 	string get_list_customers(Shop shop);
 	//string get_list_associates(Shop shop);
 	string get_list_robotmodel();
 	string get_list_parts();
 };
-string View::get_menu()
+void View::get_menu()
 {
 	int i=0;
-	 string menu_options[]= {"Create new robot parts.","Create new robot Model.","Create a new Customer.","Create a new Sales Associate","Create a new order","List orders","List Customers","List Sales Associate", "List Robot Models","List robot parts","Save","Load","Quit"};
+	 string menu_options[]= {"Quit","Create new robot parts.","Create new robot Model.","Create a new Customer.","Create a new Sales Associate","Create a new order","List orders","List Customers","List Sales Associate", "List Robot Models","List robot parts","Save","Load"};
 	while (i!=13)
 	{
 		
-		if (i=12)
-		{
-			
-			cout<<"(0) "<<menu_options[i];
-		}
-		else
-		{
 		
-		cout<<"( "<<i<<") "<<menu_options[i];
-		}
+	
+		
+		cout<<"( "<<i<<") "<<menu_options[i]<<"\n";
+		
 	i++;
 }
 }
@@ -301,14 +297,14 @@ string View::get_list_associates(Shop shop)
 		   
 		   
 		   
-		*/   
+	  
 		   
-	   }
+	   }*/
 class Controller
 {
 public:
 void cmloop();
-void exectcom(int com);
+int exectcom(int com);
 View view;
 Shop shop;
 };
@@ -322,14 +318,14 @@ while(ind !=0)
 	view.get_menu();
 cin>>ind;
 cin.ignore();
-exectcom(ind);
+ind=exectcom(ind);
 }	
 }
-void Controller::exectcom(int command)
+int Controller::exectcom(int command)
 {
 	if(command ==0)
 	{
-		return;
+		return 0;
 	}
 	else if(command ==1)
 	{
@@ -348,7 +344,7 @@ void Controller::exectcom(int command)
 		cin>>description_pt;
 		cout<<"Image filename";
 		cin>>image_filename_pt;
-		shop.create_new_robot_part(name_pt,model_number_pt,cost_pt,description_pt,image_filename_pt);
+		shop.create_new_robot_part();
 	}
 	else if (command==2)
 	{
@@ -371,47 +367,10 @@ void Controller::exectcom(int command)
 	}
 	else if (command==5)
 	{
-		get_list_associates(shop);
-		shop.create_new_order();
+		//get_list_associates(shop);
+		shop.create_new_order(shop);
 	}
-	/*else if(command==6)
-	{
-		view.get_list_order(shop);
-		
-	}
-	else if (command==7)
-	{
-		
-		
-	}
-	else if (command==8)
-	{
 
-
-	}
-	else if (command==9)
-	{
-		
-		
-	}
-	else if (command==10)
-	{
-
-
-	}
-	else if (command==11)
-	{
-		
-		
-		
-	}
-	else if( command==12)
-	{
-		
-		
-		
-	}
-	*/
 	else
 	{
 		cout<<"Invalid Command";
