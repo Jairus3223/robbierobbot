@@ -124,13 +124,13 @@ string nam;
 string number;
 string email;
 int numb;
-cout<<"Please Enter Customer's Name";
+cout<<"Please Enter Customer's Name:\n";
 cin>> name;
-cout<<"Phone Number?";
+cout<<"Phone Number:\n";
 cin>>number;
-cout<<"Email?";
+cout<<"Email:\n";
 cin>>email;
-cout<<" Customer number";
+cout<<"Customer number:\n";
 cin>>numb;
 
 	name=nam;
@@ -318,7 +318,7 @@ while(ind !=0)
 	view.get_menu();
 cin>>ind;
 cin.ignore();
-ind=exectcom(ind);
+exectcom(ind);
 }	
 }
 int Controller::exectcom(int command)
@@ -336,13 +336,13 @@ int Controller::exectcom(int command)
 	string image_filename_pt;
 	cout<<"Name";
 		cin>>name_pt;
-		cout<<"Model Number";
+		cout<<"Model Number:\n";
 		cin>>model_number_pt;
-		cout<<"Cost";
+		cout<<"Cost:\n";
 		cin>>cost_pt;
-		cout<<"Description";
+		cout<<"Description:\n";
 		cin>>description_pt;
-		cout<<"Image filename";
+		cout<<"Image filename:\n";
 		cin>>image_filename_pt;
 		shop.create_new_robot_part();
 	}
