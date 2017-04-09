@@ -98,9 +98,9 @@ void Sales_associate:: set_variables()
 {
 int id;
 string names;
-	cout<<"Please Enter Sales Associate name";
+	cout<<"Please Enter Sales Associate name:\n";
 	cin>> names;
-	cout<<"ID number?";
+	cout<<"ID number:\n";
 	cin>>id;
 	name=names;
 	employee_number=id;
@@ -260,7 +260,7 @@ public:
 void View::get_menu()
 {
 	int i=0;
-	 string menu_options[]= {"Quit","Create new robot parts.","Create new robot Model.","Create a new Customer.","Create a new Sales Associate","Create a new order","List orders","List Customers","List Sales Associate", "List Robot Models","List robot parts","Save","Load"};
+	 string menu_options[]= {"Quit","Create new robot parts.","Create new robot Model.","Create a new Customer.","Create a new Sales Associate","Create a new order","Save","Load"};
 	while (i!=13)
 	{
 		
@@ -373,7 +373,7 @@ int Controller::exectcom(int command)
 
 	else
 	{
-		cout<<"Invalid Command";
+		cout<<"Invalid Command\n";
 	}
 	
 	
