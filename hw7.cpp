@@ -219,7 +219,28 @@ int status;
 public:
 double robot_cost();
 double extended_price ();
-void set_variables();
+void set_variables(Shop shop)
+{
+	int command;
+	cout<<"Please enter the order number";
+	cin>>order_number;
+	cout<<"Please enter the date";
+	getline(cin.date);
+	
+	cout<<"Which customer";
+	
+	
+	cout<<"What sales associate";
+	
+	
+	cout<<"What Robel model";
+		
+		
+		
+	
+	
+	
+}
 };
 
 
