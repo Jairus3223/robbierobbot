@@ -244,9 +244,54 @@ void Shop::create_new_robot_part()
     
  Robot_part pts;
 		 pts.change_variables();   
-    
+	
+	int i;
+	int com;
+	string menu[]={"Battery","Locomotor","Torso","Head","Arm"};
+while(i!=5)
+{
+	cout<<"("<<i<<" ) "<<menu[i]<<"\n";
+    i++;
 }
-
+cin>>com;
+	if(com==0)
+	{
+		Battery b;
+	}
+	else if(com==1)
+	{
+		
+		Locomotor a;
+		
+	}
+	
+	else if(com==2)
+		
+	{
+		Torso c;
+		
+		
+	}
+	else if (com==3)
+		
+	{
+		Head d;
+		
+		
+	}
+	else if (com==4)
+	{
+		Arm e;
+		
+	}
+	
+	else
+	{cout<<"Invalid Part";
+	 return;
+	}
+	
+	
+}
 class View
 {
 public:
@@ -261,7 +306,7 @@ void View::get_menu()
 {
 	int i=0;
 	 string menu_options[]= {"Quit","Create new robot parts.","Create new robot Model.","Create a new Customer.","Create a new Sales Associate","Create a new order","Save","Load"};
-	while (i!=13)
+	while (i!=8)
 	{
 		
 		
