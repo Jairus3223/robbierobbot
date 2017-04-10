@@ -25,10 +25,10 @@ void Robot_part::change_variables()
 		getline(cin,name_pt);
 	cin.ignore();
 		cout<<"Model Number\n";
-		getline(cin,model_number_pt);
-		cout<<"Cost";
+	cin>>model_number_pt;
+		cout<<"Cost\n";
 	cin.ignore();
-		getline(cin,cost_pt);
+cin>>cost_pt;
 cin.ignore();
 		cout<<"Description\n";
 		
