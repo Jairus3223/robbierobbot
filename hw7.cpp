@@ -22,20 +22,20 @@ void Robot_part::change_variables()
 	string description_pt;
 	string image_filename_pt;
 	cout<<"Name\n";
-		cin>>name_pt;
+		getline(cin,name_pt);
 	cin.ignore();
 		cout<<"Model Number\n";
-		cin>>model_number_pt;
+		getline(cin,model_number_pt);
 		cout<<"Cost";
 	cin.ignore();
-		cin>>cost_pt;
+		getline(cin,cost_pt);
 cin.ignore();
 		cout<<"Description\n";
 		
-	cin>>description_pt;
+	getline(cin,description_pt);
 	cin.ignore();
 		cout<<"Image filename\n";
-		cin>>image_filename_pt;
+		getline(cin,image_filename_pt);
 		cin.ignore();
 	 name=name_pt;
 		model_number=model_number;
@@ -363,7 +363,7 @@ cin>>com;
 	
 	else
 	{cout<<"Invalid Part";
-	 return;
+	 
 	}
 	
 	
