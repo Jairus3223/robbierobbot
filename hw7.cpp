@@ -219,26 +219,28 @@ int status;
 public:
 double robot_cost();
 double extended_price ();
-void set_variables(int order_numbers,string dates,Customer cus, Sales_associates t, Robot_model rob)
+void set_variables(Shop shop)
 {
-	order_number=order_numbers;
-	date=dates;
-	customer=cus;
+	int command;
+	cout<<"Please enter the order number";
+	cin>>order_number;
+	cout<<"Please enter the date";
+	getline(cin.date);
 	
-	sales_associate=t;
-	robot_model=rob;
+	cout<<"Which customer";
+	
+	
+	cout<<"What sales associate";
+	
+	
+	cout<<"What Robel model";
+		
+		
+		
+	
 	
 	
 }
-
-	
-		
-		
-		
-	
-	
-	
-
 };
 
 
@@ -265,7 +267,7 @@ class Shop
 	 void create_new_customers();
 	
 	 void create_new_sales_associate();
-	 void create_new_order();	 
+	 void create_new_order(Shop shop);	 
 
 	 void save(string filename);
 	 void open(string filename);
@@ -274,7 +276,11 @@ class Shop
 }; 
 
 void Shop::create_new_robot_model()
-{}
+{
+	
+	
+	
+}
 
 
 void Shop:: create_new_sales_associate()
@@ -288,11 +294,10 @@ Sales_associate sal;
 	
 }
 
-void Shop:: create_new_order(int order_numbers,string dates,Customer cus, Sales_associates t, Robot_model rob)
+void Shop:: create_new_order(Shop shop)
 {
-	Order order;
-	order.change_variable(int order_numbers,string dates,Customer cus, Sales_associates t, Robot_model rob);
-	orders.push_back(order);
+	
+	
 	
 	
 }
@@ -389,9 +394,9 @@ class View
 public:
 	void get_menu();
 	//string get_list_order(Shop shop);
-	void get_list_customers(vector <Customer>customer);
-	void get_list_associates(vector <Sales_associate> sales_associate);
-	void get_list_robotmodel(vector <Robot_model>robot_models);
+	string get_list_customers(Shop shop);
+	//string get_list_associates(Shop shop);
+	string get_list_robotmodel();
 	string get_list_parts();
 };
 void View::get_menu()
@@ -400,43 +405,43 @@ void View::get_menu()
 	 string menu_options[]= {"Quit","Create new robot parts.","Create new robot Model.","Create a new Customer.","Create a new Sales Associate","Create a new order","Save","Load"};
 	while (i!=8)
 	{
+		
+		
+	
+		
 		cout<<"( "<<i<<") "<<menu_options[i]<<"\n";
+		
 	i++;
 }
 }
-void View::get_list_robot_models(vector <Robot_model> robot_models)
+/*string View::get_list_order(Shop shop)
+{
+int i;
+	if(shop.orders[0]=="NULL")
+	   {
+	cout<<"There are no Current Orders";	   
+	   }
+	 else
+	   {
+	while(shop.orders[i]!="NULL")
+	{
+		cout<<"("<<i<<") "<<shop.orders[i];
+		i++
+}	
+	   }
+string View::get_list_associates(Shop shop)
 	   {
 		   int i;
-		 while(robot_models[i].name!=NULL)
-		 {
-		 cout<<"("<<i") "<<robot_models[i].name<<"/n";
-		 i++
-		 }	   
-	   }
-
-
-void View::get_list_associates(vector <Sales_associate> sales_associate)
-	   {
-		   int i;
-		 while(sales_associate[i].name!=NULL)
-		 {
-		 cout<<"("<<i") "<<sales_associate[i].name<<"/n";
-		 i++
-		 }	   
-	   }
-
-void View::get_list_customers(vector <Customer> customer)
-	   {
-		   int i;
-		 while(customer[i].name!=NULL)
-		 {
-		 cout<<"("<<i") "<<customer[i].name<<"/n";
-		 i++
-		 }	   
-	   }
-
-
-
+		 while(shop.sales_associate[i]!=NULL)
+		 {cout<<"("<<shop.sales_associate[i]<<")";
+		  i++;
+		 }
+		   
+		   
+		   
+	  
+		   
+	   }*/
 class Controller
 {
 public:
@@ -477,31 +482,9 @@ int Controller::exectcom(int command)
 	}
 	else if (command==3)
 	{
-int command;
-		int order_number;
-		string date;
-	cout<<"Please enter the order number\n";
-	cin>>order_number;
-	cout<<"Please enter the date\n";
-	getline(cin,date);
-	
-	cout<<"Which customer\n";
-	view.get_list_customers(shop.customers);
-	cin>>command;
-	Customer cus = shop.customer[command];
-	cout<<"What sales associate";
-		view.get_list_associates(shop.associates);
-		cin>>command;
-	Sales_associate sal=shop.sales_associate[command]; 	
-	
-	
-	
-	
-	cout<<"What Robot model";
-	view.get_list_robotmodel(shop.robot_models);
-	cin>>command;
-Robot_model rob= shop.robot_model[command];
-		shop.create_new_order(order_number,date,cus,sal,rob);
+
+
+		shop.create_new_customers();
 	}
 	
 	else if (command==4)
