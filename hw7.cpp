@@ -45,32 +45,88 @@ class Torso
 int battery_comparments;
 int max_arms;
 Robot_part torso;
+public:
+void change_variable(Robot_part t);
 };
+void Torso::change_variable(Robot_part t)
+{
+	
+cout<<"Max number of Arms\n"
+cin>>max_arms;	
+torso=t;	
+cout<<"How many battery comparments?"
+	cin>>battery_comparments;
+
+
+
+
 class Battery
 {
 double power_available;
 double max_energy;
 Robot_part battery;
-
+public:
+	void change_variable(Robot_part t);
 
 };
+
+void Battery::change_variable(Robot_part t)
+{
+	
+cout<<"How much power remains?\n"
+cin>>power_available;	
+batteryr=t;
+cout<<"What is max power?\n";
+	cin>>max_energy;
+	
+	
+	
+	
+}
 class Arm
 {
 	double max_power;
 	Robot_part arm;
+public: 
+	void change_variable(Robot_part t);
 };
+void Arm::change_variable(Robot_part t)
+{
+	
+cout<<"How much power in part?\n"
+cin>>max_power;	
+arm=t;	
+}
 class Locomotor
 {
 	double max_power;
 	Robot_part locomotor;
-	
+	public:
+	void change_variable(Robot_part t);
 };
+void Locomotor::change_variable(Robot_part t)
+{
+	
+cout<<Max Power in part?\n"
+cin>>max_power;	
+locomotor=t;		
+	
+}
+	
 class Head
 {
 	double power;
 	Robot_part head;
+void change_variable(Robot_part t);	
 };
-
+void Head::change_variable(Robot_part t)
+{
+cout<<"How much power in part?\n"
+cin>>power;	
+head=t;	
+	
+}
+	
 class Robot_model
 {
 	string name;
@@ -158,12 +214,12 @@ class Shop
 {
 	vector <Order> orders;
 	vector <Arm> arm_parts;
-	vector <Torso> torso_part;
-	vector<Locomotor> locomotor_part;
-	vector <Battery> battery_part;
+	vector <Torso> torso_parts;
+	vector<Locomotor> locomotor_parts;
+	vector <Battery> battery_parts;
 	vector <Robot_model> robot_models;
 	vector <Customer> customers;
-	vector <Head> head_part;
+	vector <Head> head_parts;
 	vector <Sales_associate> sales_associate;
 	public:
 	 void create_new_robot_part();
@@ -257,11 +313,15 @@ cin>>com;
 	if(com==0)
 	{
 		Battery b;
+		b.change_variable(pts);
+		battery_parts.push_back(b);
 	}
 	else if(com==1)
 	{
 		
 		Locomotor a;
+		a.change_variable(pts);
+		locomotor_parts.push_back(a);
 		
 	}
 	
@@ -269,20 +329,23 @@ cin>>com;
 		
 	{
 		Torso c;
-		
+		c.change_variable(pts);
+		torso_parts.push_back(c);
 		
 	}
 	else if (com==3)
 		
 	{
 		Head d;
-		
+		d.change_variable(pts);
+		head_parts.push_back(d);
 		
 	}
 	else if (com==4)
 	{
 		Arm e;
-		
+		e.change_variable(pts);
+		arm_parts.push_back(e);
 	}
 	
 	else
