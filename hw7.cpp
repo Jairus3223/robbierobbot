@@ -21,17 +21,22 @@ void Robot_part::change_variables()
 	double cost_pt;
 	string description_pt;
 	string image_filename_pt;
-	cout<<"Name";
+	cout<<"Name\n";
 		cin>>name_pt;
-		cout<<"Model Number";
+	cin.ignore();
+		cout<<"Model Number\n";
 		cin>>model_number_pt;
 		cout<<"Cost";
+	cin.ignore();
 		cin>>cost_pt;
-		cout<<"Description";
-		cin>>description_pt;
-		cout<<"Image filename";
-		cin>>image_filename_pt;
+cin.ignore();
+		cout<<"Description\n";
 		
+	cin>>description_pt;
+	cin.ignore();
+		cout<<"Image filename\n";
+		cin>>image_filename_pt;
+		cin.ignore();
 	 name=name_pt;
 		model_number=model_number;
 	cost=cost_pt;
@@ -445,21 +450,7 @@ int Controller::exectcom(int command)
 	}
 	else if(command ==1)
 	{
-		string name_pt;
-	int model_number_pt;
-	double cost_pt;
-	string description_pt;
-	string image_filename_pt;
-	cout<<"Name";
-		cin>>name_pt;
-		cout<<"Model Number:\n";
-		cin>>model_number_pt;
-		cout<<"Cost:\n";
-		cin>>cost_pt;
-		cout<<"Description:\n";
-		cin>>description_pt;
-		cout<<"Image filename:\n";
-		cin>>image_filename_pt;
+	
 		shop.create_new_robot_part();
 	}
 	else if (command==2)
