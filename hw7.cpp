@@ -51,10 +51,10 @@ void change_variable(Robot_part t);
 void Torso::change_variable(Robot_part t)
 {
 	
-cout<<"Max number of Arms\n"
+cout<<"Max number of Arms\n";
 cin>>max_arms;	
 torso=t;	
-cout<<"How many battery comparments?"
+cout<<"How many battery comparments?";
 	cin>>battery_comparments;
 
 
@@ -73,7 +73,7 @@ public:
 void Battery::change_variable(Robot_part t)
 {
 	
-cout<<"How much power remains?\n"
+cout<<"How much power remains?\n";
 cin>>power_available;	
 batteryr=t;
 cout<<"What is max power?\n";
@@ -93,7 +93,7 @@ public:
 void Arm::change_variable(Robot_part t)
 {
 	
-cout<<"How much power in part?\n"
+cout<<"How much power in part?\n";
 cin>>max_power;	
 arm=t;	
 }
@@ -107,7 +107,7 @@ class Locomotor
 void Locomotor::change_variable(Robot_part t)
 {
 	
-cout<<Max Power in part?\n"
+cout<<"Max Power in part?\n";
 cin>>max_power;	
 locomotor=t;		
 	
@@ -121,7 +121,7 @@ void change_variable(Robot_part t);
 };
 void Head::change_variable(Robot_part t)
 {
-cout<<"How much power in part?\n"
+cout<<"How much power in part?\n";
 cin>>power;	
 head=t;	
 	
