@@ -57,7 +57,7 @@ torso=t;
 cout<<"How many battery comparments?";
 	cin>>battery_comparments;
 
-
+}
 
 
 class Battery
@@ -66,66 +66,69 @@ double power_available;
 double max_energy;
 Robot_part battery;
 public:
-	void change_variable(Robot_part t);
-
-};
-
-void Battery::change_variable(Robot_part t)
-{
-	
+	void change_variable(Robot_part t)
+	{
+	    
+	    	
 cout<<"How much power remains?\n";
 cin>>power_available;	
-batteryr=t;
+battery=t;
 cout<<"What is max power?\n";
 	cin>>max_energy;
 	
 	
+	    
+	    
+	}
+
+};
+
+
 	
 	
-}
+	
+	
+
 class Arm
 {
 	double max_power;
 	Robot_part arm;
 public: 
-	void change_variable(Robot_part t);
-};
-void Arm::change_variable(Robot_part t)
-{
-	
-cout<<"How much power in part?\n";
+	void change_variable(Robot_part t)
+	{
+	    cout<<"How much power in part?\n";
 cin>>max_power;	
 arm=t;	
-}
+	   	    
+	}
+};
+
 class Locomotor
 {
 	double max_power;
 	Robot_part locomotor;
 	public:
-	void change_variable(Robot_part t);
-};
-void Locomotor::change_variable(Robot_part t)
-{
-	
-cout<<"Max Power in part?\n";
+	void change_variable(Robot_part t)
+	{
+	    cout<<"Max Power in part?\n";
 cin>>max_power;	
-locomotor=t;		
-	
-}
+locomotor=t;	}
+
+};
+
 	
 class Head
 {
 	double power;
 	Robot_part head;
-void change_variable(Robot_part t);	
-};
-void Head::change_variable(Robot_part t)
+	public:
+void change_variable(Robot_part t)
 {
-cout<<"How much power in part?\n";
+    cout<<"How much power in part?\n";
 cin>>power;	
-head=t;	
-	
-}
+head=t;	}
+};
+
 	
 class Robot_model
 {
@@ -148,10 +151,11 @@ class Sales_associate
 string name;
 int employee_number;
 public:
-void set_variables();
-};
-void Sales_associate:: set_variables()
+void set_variables()
 {
+    
+    
+    
 int id;
 string names;
 	cout<<"Please Enter Sales Associate name:\n";
@@ -160,8 +164,11 @@ string names;
 	cin>>id;
 	name=names;
 	employee_number=id;
-	
-}
+    }
+};
+
+
+
 
 class Customer
 {
@@ -170,13 +177,11 @@ class Customer
 	string phone_number;
 	string email_address;
 public:
-	void set_variables();
-};
-	
-
-void Customer::set_variables()
-{
-string nam;
+	void set_variables()
+	{
+	    
+	    
+	    string nam;
 string number;
 string email;
 int numb;
@@ -192,8 +197,11 @@ cin>>numb;
 	name=nam;
 	phone_number=number;
 	email_address=email;
-	customer_number=numb;	
-}
+	customer_number=numb;	}
+};
+	
+
+
 	
 class Order
 {
