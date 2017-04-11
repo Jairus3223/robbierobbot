@@ -1,4 +1,5 @@
-#include <iostream>
+
+{#include <iostream>
 #include <vector>
 #include <string>
 using namespace std;
@@ -14,6 +15,10 @@ class Robot_part
 	void change_variables();
 	string get_name{
 		return name;
+	}
+	double get_cost()
+	{
+		return cost;
 	}
 };
 
@@ -65,6 +70,10 @@ void get_rob_part(Robot_part t)
 	t= torso;
 	
 }
+/*void cost(double co)
+{
+	co= torso.get_cost();
+}*/
 };
 void Torso::change_variable(Robot_part t)
 {
@@ -103,6 +112,10 @@ cout<<"What is max power?\n";
 	return battery.get_name();
 	
 }
+/*void cost(double co)
+{
+	co= battery.get_cost();
+}*/
 void get_rob_part(Robot_part t)
 {
 	t= battery;
@@ -138,6 +151,10 @@ void get_rob_part(Robot_part t)
 	t= arm;
 	
 }
+/*void cost(double co)
+{
+	co= arm.get_cost();
+}*/
 };
 
 class Locomotor
@@ -160,6 +177,10 @@ void get_rob_part(Robot_part t)
 	t= locomotor;
 	
 }
+/*void cost(double co)
+{
+	co= locomotor.get_cost();
+}*/
 };
 
 	
@@ -183,7 +204,12 @@ void get_rob_part(Robot_part t)
 	t= head;
 	
 }
-};
+
+/*void cost(double co)
+{
+	co= head.get_cost();
+}*/
+}
 
 
 	
@@ -197,10 +223,19 @@ class Robot_model
 	Robot_part arm;
 	Robot_part battery;
 	public:
-	double cost();
+	double cost()
+	{
+		
+		
+	}
 	double max_speed();
 	double max_batter_life();
 	void change_variables();
+	string get_name()
+{
+	return name;
+	
+}
 
 };
 void Robot_model::change_variables(Robot_part hd, Robot_part arms,Robot_part locom,Robot_part batt,Robot_part tor, string names,int model)
@@ -222,10 +257,10 @@ string name;
 int employee_number;
 public:
 void set_variables()
+
 {
     
-    
-    
+   
 int id;
 string names;
 	cout<<"Please Enter Sales Associate name:\n";
@@ -235,6 +270,11 @@ string names;
 	name=names;
 	employee_number=id;
     }
+	string get_name()
+{
+	return name;
+	
+}
 };
 
 
@@ -268,6 +308,11 @@ cin>>numb;
 	phone_number=number;
 	email_address=email;
 	customer_number=numb;	}
+	string get_name()
+{
+	return name;
+	
+}
 };
 	
 
@@ -284,7 +329,18 @@ int status;
 public:
 double robot_cost();
 double extended_price ();
-void set_variables();
+void set_variables(int order,string dat,Customer cus,Sales_associate sale,Robot_model ro)
+{
+	order_number=order;
+	date=dat;
+	customer=cus;
+	sales_associate=sale;
+	robot_model=ro;
+	
+	cout<<"Status of order?";
+	cin>>status;
+	
+}
 };
 
 
@@ -322,6 +378,7 @@ class Shop
 void Shop::create_new_robot_model()
 {int i;
 int com;
+double cost1,cost2,cost3,cost4,cost5;
 Robot_part hea;
 Robot_part ar;
 Robot_part loco;
@@ -342,7 +399,7 @@ Robot_model h;
 	}
 cout<<"Which part:\n";	
 	cin>>com;
-	arm_parts[i].get_rob_part(ar);
+	arm_parts[com].get_rob_part(ar);
 	
 	for(i=0;i<head_parts.size();i++)
 	{
@@ -352,7 +409,7 @@ cout<<"Which part:\n";
 	
 	cout<<"Which part:\n";	
 	cin>>com;
-	head_parts[i].get_rob_part(hea);
+	head_parts[com].get_rob_part(hea);
 	for(i=0;i<locomotor_parts.size();i++)
 	{
 		cout<<"("<<i<<") "<<locomotor_parts[i].get_name<<"\n";
@@ -360,13 +417,13 @@ cout<<"Which part:\n";
 	cout<<"Which part:\n";	
 	cin>>com;
 	
-	locomotor_parts[i].get_rob_part(loco);
+	locomotor_parts[com].get_rob_part(loco);
 	
 	for(i=0;i<battery_parts.size();i++)
 	{
 		cout<<"("<<i<<") "<<battery_parts[i].get_name<<"\n";
 	}
-	battery_parts[i].get_rob_part(bat);
+	
 	cout<<"Which part:\n";	
 	cin>>com;
 	battery_parts[i].get_rob_part(bat);
@@ -380,10 +437,12 @@ cout<<"Which part:\n";
 	
 	cout<<"Which part:\n";	
 	cin>>com;
-	torso_parts[i].get_rob_part(tor);
-	
+	torso_parts[com].get_rob_part(tor);
+
 	h.change_variables( hea,ar,loco,bat,tor,named,model_numbers);
 robot_models.push_back(h);
+
+
 }
 
 
@@ -398,12 +457,48 @@ Sales_associate sal;
 	
 }
 
-void Shop:: create_new_order(Shop shop)
-{
+void Shop:: create_new_order()
+{int i;
+int com;
+	int order;
+	string date;
+	Customer cus;
+	Sales_associate sal;
+	Robot_model ro;
 	
+	cout<<"Please enter order number\n";
+	cin>>order;
+	cout<<"Please enter date";
+	getline(cin,date);
+	cin.ignore();
+	for(i=0;i<customers.size();i++)
+	{
+		cout<<"("<<i<<") "<<customer[i].get_name<<"\n";
+	}
+	cout<<"Which Customer?\n";
+	cin>>com;
 	
+	cus=customers[com];
 	
+	Order order;
 	
+	for(i=0;i<sales_associate.size();i++)
+	{
+		cout<<"("<<i<<") "<<sales_associate[i].get_name<<"\n";
+	}
+	cout<<"Who is making the sale?\n";
+	cin>>com;
+	sal=sales_associate[com];
+	for(i=0;i<robot_models.size();i++)
+	{
+		cout<<"("<<i<<") "<<robot_model[i].get_name<<"\n";
+	}
+	cout<<"What model?\n";
+	cin>>com;
+	ro=robot_models[com];
+	order.set_variables(order,date,cus,sal,ro);
+	
+	orders.push_back(order);
 }
 
 void Shop:: save(string filename)
@@ -498,10 +593,9 @@ class View
 public:
 	void get_menu();
 	//string get_list_order(Shop shop);
-	string get_list_customers(Shop shop);
+	
 	//string get_list_associates(Shop shop);
-	string get_list_robotmodel();
-	string get_list_parts();
+	
 };
 void View::get_menu()
 {
@@ -518,34 +612,9 @@ void View::get_menu()
 	i++;
 }
 }
-/*string View::get_list_order(Shop shop)
-{
-int i;
-	if(shop.orders[0]=="NULL")
-	   {
-	cout<<"There are no Current Orders";	   
-	   }
-	 else
-	   {
-	while(shop.orders[i]!="NULL")
-	{
-		cout<<"("<<i<<") "<<shop.orders[i];
-		i++
-}	
-	   }
-string View::get_list_associates(Shop shop)
-	   {
-		   int i;
-		 while(shop.sales_associate[i]!=NULL)
-		 {cout<<"("<<shop.sales_associate[i]<<")";
-		  i++;
-		 }
-		   
-		   
-		   
-	  
-		   
-	   }*/
+
+
+
 class Controller
 {
 public:
@@ -600,7 +669,7 @@ int Controller::exectcom(int command)
 	else if (command==5)
 	{
 		//get_list_associates(shop);
-		shop.create_new_order(shop);
+		shop.create_new_order();
 	}
 
 	else
