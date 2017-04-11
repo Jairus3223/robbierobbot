@@ -209,7 +209,7 @@ void get_rob_part(Robot_part t)
 {
 	co= head.get_cost();
 }*/
-}
+};
 
 
 	
