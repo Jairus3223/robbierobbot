@@ -12,6 +12,9 @@ class Robot_part
 	//string image_filename;
 	public:
 	void change_variables();
+	string get_name{
+		return name;
+	}
 };
 
 void Robot_part::change_variables()
@@ -52,6 +55,16 @@ int max_arms;
 Robot_part torso;
 public:
 void change_variable(Robot_part t);
+string get_name()
+{
+	return torso.get_name();
+	
+}
+void get_rob_part(Robot_part t)
+{
+	t= torso;
+	
+}
 };
 void Torso::change_variable(Robot_part t)
 {
@@ -85,7 +98,16 @@ cout<<"What is max power?\n";
 	    
 	    
 	}
-
+	string get_name()
+{
+	return battery.get_name();
+	
+}
+void get_rob_part(Robot_part t)
+{
+	t= battery;
+	
+}
 };
 
 
@@ -106,6 +128,16 @@ cin>>max_power;
 arm=t;	
 	   	    
 	}
+	string get_name()
+{
+	return arm.get_name();
+	
+}
+void get_rob_part(Robot_part t)
+{
+	t= arm;
+	
+}
 };
 
 class Locomotor
@@ -118,7 +150,16 @@ class Locomotor
 	    cout<<"Max Power in part?\n";
 cin>>max_power;	
 locomotor=t;	}
-
+string get_name()
+{
+	return locomotor.get_name();
+	
+}
+void get_rob_part(Robot_part t)
+{
+	t= locomotor;
+	
+}
 };
 
 	
@@ -132,7 +173,18 @@ void change_variable(Robot_part t)
     cout<<"How much power in part?\n";
 cin>>power;	
 head=t;	}
+string get_name()
+{
+	return head.get_name();
+	
+}
+void get_rob_part(Robot_part t)
+{
+	t= head;
+	
+}
 };
+
 
 	
 class Robot_model
@@ -148,8 +200,21 @@ class Robot_model
 	double cost();
 	double max_speed();
 	double max_batter_life();
-};
+	void change_variables();
 
+};
+void Robot_model::change_variables(Robot_part hd, Robot_part arms,Robot_part locom,Robot_part batt,Robot_part tor, string names,int model)
+{
+	torso=tor;
+	head=hd;
+	arm=arms;
+	locomotor=locom;
+	battery=batt;
+	name=names;
+	model_number=model;
+	
+	
+}
 
 class Sales_associate
 {
@@ -219,28 +284,7 @@ int status;
 public:
 double robot_cost();
 double extended_price ();
-void set_variables(Shop shop)
-{
-	int command;
-	cout<<"Please enter the order number";
-	cin>>order_number;
-	cout<<"Please enter the date";
-	getline(cin.date);
-	
-	cout<<"Which customer";
-	
-	
-	cout<<"What sales associate";
-	
-	
-	cout<<"What Robel model";
-		
-		
-		
-	
-	
-	
-}
+void set_variables();
 };
 
 
@@ -276,10 +320,70 @@ class Shop
 }; 
 
 void Shop::create_new_robot_model()
-{
+{int i;
+int com;
+Robot_part hea;
+Robot_part ar;
+Robot_part loco;
+Robot_part bat;
+Robot_part tor;
+Robot_model h;
+
+	string named;
+	int model_numbers;
+	cout<<"What is this Model Name\n";
+	getline(cin,named);
+	cout<<"What is the Model number\n";
+	cin>>model_numbers;
+	cin.ignore();
+	for(i=0;i<arm_parts.size();i++)
+	{
+		cout<<"("<<i<<") "<<arm_parts[i].get_name<<"\n";
+	}
+cout<<"Which part:\n";	
+	cin>>com;
+	arm_parts[i].get_rob_part(ar);
+	
+	for(i=0;i<head_parts.size();i++)
+	{
+		cout<<"("<<i<<") "<<head_parts[i].get_name<<"\n";
+	}
+	
+	
+	cout<<"Which part:\n";	
+	cin>>com;
+	head_parts[i].get_rob_part(hea);
+	for(i=0;i<locomotor_parts.size();i++)
+	{
+		cout<<"("<<i<<") "<<locomotor_parts[i].get_name<<"\n";
+	}
+	cout<<"Which part:\n";	
+	cin>>com;
+	
+	locomotor_parts[i].get_rob_part(loco);
+	
+	for(i=0;i<battery_parts.size();i++)
+	{
+		cout<<"("<<i<<") "<<battery_parts[i].get_name<<"\n";
+	}
+	battery_parts[i].get_rob_part(bat);
+	cout<<"Which part:\n";	
+	cin>>com;
+	battery_parts[i].get_rob_part(bat);
 	
 	
 	
+	for(i=0;i<torso_parts.size();i++)
+	{
+		cout<<"("<<i<<") "<<torso_parts[i].get_name<<"\n";
+	}
+	
+	cout<<"Which part:\n";	
+	cin>>com;
+	torso_parts[i].get_rob_part(tor);
+	
+	h.change_variables( hea,ar,loco,bat,tor,named,model_numbers);
+robot_models.push_back(h);
 }
 
 
