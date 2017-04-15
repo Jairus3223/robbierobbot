@@ -2,6 +2,9 @@
 {#include <iostream>
 #include <vector>
 #include <string>
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/fl_ask.H>
 using namespace std;
 class Robot_part
 {
@@ -209,7 +212,7 @@ void get_rob_part(Robot_part t)
 {
 	co= head.get_cost();
 }*/
-};
+}
 
 
 	
@@ -684,7 +687,8 @@ int Controller::exectcom(int command)
 int main()
 {
 	Controller control;
-	
+	Fl_Window win(1,1);
+  win.show();
 	control.cmloop();
 	
 	
