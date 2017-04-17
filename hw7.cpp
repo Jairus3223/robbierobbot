@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -13,7 +12,6 @@ class Robot_part
 	int model_number;
 	double cost;
 	string description;
-	//string image_filename;
 	public:
 	void change_variables();
 	string get_name{
@@ -32,22 +30,20 @@ void Robot_part::change_variables()
 	double cost_pt;
 	string description_pt;
 	string image_filename_pt;
-	cout<<"Name\n";
-		getline(cin,name_pt);
-	cin.ignore();
-		cout<<"Model Number\n";
-	cin>>model_number_pt;
-		cout<<"Cost\n";
-	cin.ignore();
-cin>>cost_pt;
-cin.ignore();
-		cout<<"Description\n";
-		
-	getline(cin,description_pt);
-	cin.ignore();
-		cout<<"Image filename\n";
-		getline(cin,image_filename_pt);
-		cin.ignore();
+	string e="Name\n";
+		name_pt=(fl_input(e.c_str(),0));
+	
+		string m="Model Number\n";
+	model_number_pt=atoi(fl_input(m.c_str(),0));
+		string p="Cost\n";
+	cost=atoi(fl_input(p.c_str(),0))
+	
+
+
+		string d="Description\n";
+		description_pt=(fl_input(d.c_str(),0))
+	
+			
 	 name=name_pt;
 		model_number=model_number;
 	cost=cost_pt;
@@ -81,11 +77,11 @@ void get_rob_part(Robot_part t)
 void Torso::change_variable(Robot_part t)
 {
 	
-cout<<"Max number of Arms\n";
-cin>>max_arms;	
+string f="Max number of Arms\n";
+max_arms=atoi(fl_input(f.c_str(),0))	;
 torso=t;	
-cout<<"How many battery comparments?";
-	cin>>battery_comparments;
+string g="How many battery comparments?";
+	battery_comparments=atoi(fl_input(g.c_str(),0));
 
 }
 
@@ -100,11 +96,11 @@ public:
 	{
 	    
 	    	
-cout<<"How much power remains?\n";
-cin>>power_available;	
+string h="How much power remains?\n";
+power_available=atoi(fl_input(h.c_str(),0));	
 battery=t;
-cout<<"What is max power?\n";
-	cin>>max_energy;
+string i="What is max power?\n";
+	max_energy=atoi(fl_input(i.c_str(),0));
 	
 	
 	    
@@ -139,8 +135,8 @@ class Arm
 public: 
 	void change_variable(Robot_part t)
 	{
-	    cout<<"How much power in part?\n";
-cin>>max_power;	
+	    string j="How much power in part?\n";
+max_power=atoi(fl_input(j.c_str(),0));	
 arm=t;	
 	   	    
 	}
@@ -167,9 +163,12 @@ class Locomotor
 	public:
 	void change_variable(Robot_part t)
 	{
-	    cout<<"Max Power in part?\n";
-cin>>max_power;	
-locomotor=t;	}
+	    string m="Max Power in part?\n";
+max_power=atoi(fl_input(m.c_str(),0));
+		
+	t.change_variables();
+locomotor=t;	
+	}
 string get_name()
 {
 	return locomotor.get_name();
@@ -194,8 +193,8 @@ class Head
 	public:
 void change_variable(Robot_part t)
 {
-    cout<<"How much power in part?\n";
-cin>>power;	
+    string l="How much power in part?\n";
+power=atoi(fl_input(l.c_str(),0));	
 head=t;	}
 string get_name()
 {
