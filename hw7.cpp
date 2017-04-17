@@ -1,5 +1,5 @@
 
-{#include <iostream>
+#include <iostream>
 #include <vector>
 #include <string>
 #include <FL/Fl.H>
@@ -537,15 +537,11 @@ void Shop::create_new_robot_part()
  Robot_part pts;
 		 pts.change_variables();   
 	
-	int i;
+	
 	int com;
-	string menu[]={"Battery","Locomotor","Torso","Head","Arm"};
-while(i!=5)
-{
-	cout<<"("<<i<<" ) "<<menu[i]<<"\n";
-    i++;
-}
-cin>>com;
+	string menu="(0) Battery\n(1) Locomotor\n(2) Torso\n(3) Head\n(4) Arm";
+
+com=atoi(fl_input(menu.c_str(),0));
 	if(com==0)
 	{
 		Battery b;
@@ -585,8 +581,9 @@ cin>>com;
 	}
 	
 	else
-	{cout<<"Invalid Part";
-	 
+	{string error=" Invalid Part";
+		fl_message_title("Error");
+		fl_message(error.c_str());
 	}
 	
 	
@@ -594,26 +591,18 @@ cin>>com;
 class View
 {
 public:
-	void get_menu();
+	string get_menu();
 	//string get_list_order(Shop shop);
 	
 	//string get_list_associates(Shop shop);
 	
 };
-void View::get_menu()
+string View::get_menu()
 {
-	int i=0;
-	 string menu_options[]= {"Quit","Create new robot parts.","Create new robot Model.","Create a new Customer.","Create a new Sales Associate","Create a new order","Save","Load"};
-	while (i!=8)
-	{
-		
-		
+
+	string menu="(0) Quit\n(1) Create new robot parts.\n(2) Create New Robot Model\n(3) Create New Customer\n (4) Create a new Sales Associate\n(5) Create a new order\n(6) Save\n(7) Load";
+return menu;
 	
-		
-		cout<<"( "<<i<<") "<<menu_options[i]<<"\n";
-		
-	i++;
-}
 }
 
 
@@ -629,13 +618,12 @@ Shop shop;
 
 void Controller::cmloop()
 {
+	string menu=view.get_menu();
 	int ind = -1;
 while(ind !=0)
 {
-	
-	view.get_menu();
-cin>>ind;
-cin.ignore();
+ind= atoi(fl_input(menu.c_str(),0));
+
 exectcom(ind);
 }	
 }
@@ -677,7 +665,9 @@ int Controller::exectcom(int command)
 
 	else
 	{
-		cout<<"Invalid Command\n";
+		string error=" Invalid Command";
+		fl_message_title("Error");
+		fl_message(error.c_str());
 	}
 	
 	
