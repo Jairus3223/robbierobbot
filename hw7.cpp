@@ -36,12 +36,12 @@ void Robot_part::change_variables()
 		string m="Model Number\n";
 	model_number_pt=atoi(fl_input(m.c_str(),0));
 		string p="Cost\n";
-	cost=atoi(fl_input(p.c_str(),0))
+	cost=atoi(fl_input(p.c_str(),0));
 	
 
 
 		string d="Description\n";
-		description_pt=(fl_input(d.c_str(),0))
+		description_pt=(fl_input(d.c_str(),0));
 	
 			
 	 name=name_pt;
@@ -371,7 +371,7 @@ class Shop
 	 void create_new_sales_associate();
 	 void create_new_order(Shop shop);	 
 
-	 void save(string filename);
+	 void save();
 	 void open(string filename);
 
 
@@ -503,17 +503,17 @@ int com;
 	orders.push_back(order);
 }
 
-void Shop:: save(string filename)
-{
-
-	
-	
+void Shop:: save()
+{ 
+	string h=" Please enter a File name";
+	string name=(fl_input(h.c_str(),0));
+	ofstream file;
 
 	
 	
 }
 
-void Shop:: open (string filename)
+void Shop:: open ()
 {
 	
 	
@@ -660,6 +660,12 @@ int Controller::exectcom(int command)
 	{
 		//get_list_associates(shop);
 		shop.create_new_order();
+	}
+	else if(command==6)
+	{
+		
+		shop.save();
+		
 	}
 
 	else
