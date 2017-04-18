@@ -216,31 +216,6 @@ void get_rob_part(Robot_part t)
 
 
 	
-class Robot_model
-{
-	string name;
-	int model_number;
-	Robot_part torso;
-	Robot_part head;
-	Robot_part locomotor;
-	Robot_part arm;
-	Robot_part battery;
-	public:
-	double cost()
-	{
-		
-		
-	}
-	double max_speed();
-	double max_batter_life();
-	void change_variables(Robot_part hd, Robot_part arms,Robot_part locom,Robot_part batt,Robot_part tor, string names,int model);
-	string get_name()
-{
-	return name;
-	
-}
-
-};
 void Robot_model::change_variables(Robot_part hd, Robot_part arms,Robot_part locom,Robot_part batt,Robot_part tor, string names,int model)
 {
 	torso=tor;
@@ -372,16 +347,16 @@ class Shop
 	 void create_new_sales_associate();
 	 void create_new_order();	 
 
-	 void save();
+	 void save(string filename);
 	 void open(string filename);
 
 
 }; 
 
-oid Shop::create_new_robot_model()
+void Shop::create_new_robot_model()
 {int i;
 int com;
-//double cost1,cost2,cost3,cost4,cost5;
+double cost1,cost2,cost3,cost4,cost5;
 Robot_part hea;
 Robot_part ar;
 Robot_part loco;
@@ -398,7 +373,7 @@ Robot_model h;
 	cin.ignore();
 	for(i=0;i<arm_parts.size();i++)
 	{
-		cout<<"("<<i<<")<<arm_parts.get_name()<<"\n";
+		cout<<"("<<i<<") "<<arm_parts[i].get_name()<<"\n";
 	}
 cout<<"Which part:\n";	
 	cin>>com;
@@ -476,34 +451,33 @@ int com;
 	cin.ignore();
 	for(i=0;i<customers.size();i++)
 	{
-		cout<<"("<<i<<") "<<customer[i].get_name<<"\n";
+		cout<<"("<<i<<") "<<customers[i].get_name()<<"\n";
 	}
 	cout<<"Which Customer?\n";
 	cin>>com;
 	
 	cus=customers[com];
 	
-	Order order;
+	Order ordere;
 	
 	for(i=0;i<sales_associate.size();i++)
 	{
-		cout<<"("<<i<<") "<<sales_associate[i].get_name<<"\n";
+		cout<<"("<<i<<") "<<sales_associate[i].get_name()<<"\n";
 	}
 	cout<<"Who is making the sale?\n";
 	cin>>com;
 	sal=sales_associate[com];
 	for(i=0;i<robot_models.size();i++)
 	{
-		cout<<"("<<i<<") "<<robot_model[i].get_name<<"\n";
+		cout<<"("<<i<<") "<<robot_models[i].get_name()<<"\n";
 	}
 	cout<<"What model?\n";
 	cin>>com;
 	ro=robot_models[com];
-	order.set_variables(order,date,cus,sal,ro);
+	ordere.set_variables(order,date,cus,sal,ro);
 	
-	orders.push_back(order);
+	orders.push_back(ordere);
 }
-
 void Shop:: save()
 { 
 	string h=" Please enter a File name";
