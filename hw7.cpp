@@ -212,7 +212,7 @@ void get_rob_part(Robot_part t)
 {
 	co= head.get_cost();
 }*/
-}
+};
 
 class Robot_model
 {
@@ -231,7 +231,7 @@ class Robot_model
 	}
 	double max_speed();
 	double max_batter_life();
-	void change_variables();
+	void change_variables(Robot_part hd, Robot_part arms,Robot_part locom,Robot_part batt,Robot_part tor, string names,int model);
 	string get_name()
 {
 	return name;
@@ -371,8 +371,8 @@ class Shop
 	 void create_new_sales_associate();
 	 void create_new_order();	 
 
-	 void save(string filename);
-	 void open(string filename);
+	 void save();
+	 void open();
 
 
 }; 
@@ -519,40 +519,40 @@ int i;
 	while( arm_parts.name[i]!=NULL)
 	{
 
-	file<<( "<<i<<") "<<arm_parts.name[i]<<"\n";
+	file<<( "<<i<<") "<<arm_parts.get_name[i]<<"\n";
 		i++
 	}
 	
 	i=0;
 	file<<"\nTorso Parts\n;
-	while( torso_parts.name[i]!=NULL)
+	while( torso_parts.get_name[i]!=NULL)
 	{
 
-	file<<( "<<i<<") "<<torso_parts.name[i]<<"\n";
+	file<<( "<<i<<") "<<torso_parts.get_name[i]<<"\n";
 		i++
 	}
 	i=0;
 	file<<"\nLocomotor Parts\n;
-	while( locomotor_parts.name[i]!=NULL)
+	while( locomotor_parts.get_name[i]!=NULL)
 	{
 
-	file<<( "<<i<<") "<<locomotor_parts.name[i]<<"\n";
+	file<<( "<<i<<") "<<locomotor_parts.get_name[i]<<"\n";
 		i++
 	}
 	i=0;
 	file<<"Battery Parts\n";
-	while( battery_parts.name[i]!=NULL)
+	while( battery_parts.get_name[i]!=NULL)
 	{
 
-	file<<( "<<i<<") "<<battery_parts.name[i]<<"\n";
+	file<<( "<<i<<") "<<battery_parts.get_name[i]<<"\n";
 		i++
 	}
 	i=0;
 	file<<"\nHead Parts\n;
-	while( head_parts.name[i]!=NULL)
+	while( head_parts.get_name[i]!=NULL)
 	{
 
-	file<<( "<<i<<") "<<head_parts.name[i]<<"\n";
+	file<<( "<<i<<") "<<head_parts.get_name[i]<<"\n";
 		i++
 	}
 	file.close();
