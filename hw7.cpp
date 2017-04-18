@@ -214,7 +214,31 @@ void get_rob_part(Robot_part t)
 }*/
 }
 
+class Robot_model
+{
+	string name;
+	int model_number;
+	Robot_part torso;
+	Robot_part head;
+	Robot_part locomotor;
+	Robot_part arm;
+	Robot_part battery;
+	public:
+	double cost()
+	{
+		
+		
+	}
+	double max_speed();
+	double max_batter_life();
+	void change_variables();
+	string get_name()
+{
+	return name;
+	
+}
 
+};
 	
 void Robot_model::change_variables(Robot_part hd, Robot_part arms,Robot_part locom,Robot_part batt,Robot_part tor, string names,int model)
 {
