@@ -11,7 +11,7 @@ rebuild: clean cli
 
 
 cli: hw7.cpp
-	$(CXX) $(CXXFLAGS) -o cli hw7.cpp
+	$(CXX) $(CXXFLAGS) $(fltk-config --cxxflags) -o cli hw7.cpp
 
 clean:
 	-rm -f *.o  cli
