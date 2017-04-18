@@ -14,7 +14,8 @@ class Robot_part
 	string description;
 	public:
 	void change_variables();
-	string get_name{
+	string get_name()
+	{
 		return name;
 	}
 	double get_cost()
@@ -232,7 +233,7 @@ class Robot_model
 	}
 	double max_speed();
 	double max_batter_life();
-	void change_variables();
+	void change_variables(Robot_part hd, Robot_part arms,Robot_part locom,Robot_part batt,Robot_part tor, string names,int model);
 	string get_name()
 {
 	return name;
@@ -369,7 +370,7 @@ class Shop
 	 void create_new_customers();
 	
 	 void create_new_sales_associate();
-	 void create_new_order(Shop shop);	 
+	 void create_new_order();	 
 
 	 void save();
 	 void open(string filename);
@@ -377,10 +378,10 @@ class Shop
 
 }; 
 
-void Shop::create_new_robot_model()
+oid Shop::create_new_robot_model()
 {int i;
 int com;
-double cost1,cost2,cost3,cost4,cost5;
+//double cost1,cost2,cost3,cost4,cost5;
 Robot_part hea;
 Robot_part ar;
 Robot_part loco;
@@ -397,7 +398,7 @@ Robot_model h;
 	cin.ignore();
 	for(i=0;i<arm_parts.size();i++)
 	{
-		cout<<"("<<i<<") "<<arm_parts[i].get_name<<"\n";
+		cout<<"("<<i<<")<<arm_parts.get_name()<<"\n";
 	}
 cout<<"Which part:\n";	
 	cin>>com;
@@ -405,7 +406,7 @@ cout<<"Which part:\n";
 	
 	for(i=0;i<head_parts.size();i++)
 	{
-		cout<<"("<<i<<") "<<head_parts[i].get_name<<"\n";
+		cout<<"("<<i<<") "<<head_parts[i].get_name()<<"\n";
 	}
 	
 	
@@ -414,7 +415,7 @@ cout<<"Which part:\n";
 	head_parts[com].get_rob_part(hea);
 	for(i=0;i<locomotor_parts.size();i++)
 	{
-		cout<<"("<<i<<") "<<locomotor_parts[i].get_name<<"\n";
+		cout<<"("<<i<<") "<<locomotor_parts[i].get_name()<<"\n";
 	}
 	cout<<"Which part:\n";	
 	cin>>com;
@@ -423,7 +424,7 @@ cout<<"Which part:\n";
 	
 	for(i=0;i<battery_parts.size();i++)
 	{
-		cout<<"("<<i<<") "<<battery_parts[i].get_name<<"\n";
+		cout<<"("<<i<<") "<<battery_parts[i].get_name()<<"\n";
 	}
 	
 	cout<<"Which part:\n";	
@@ -434,7 +435,7 @@ cout<<"Which part:\n";
 	
 	for(i=0;i<torso_parts.size();i++)
 	{
-		cout<<"("<<i<<") "<<torso_parts[i].get_name<<"\n";
+		cout<<"("<<i<<") "<<torso_parts[i].get_name()<<"\n";
 	}
 	
 	cout<<"Which part:\n";	
