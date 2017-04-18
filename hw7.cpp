@@ -508,9 +508,56 @@ void Shop:: save()
 	string h=" Please enter a File name";
 	string name=(fl_input(h.c_str(),0));
 	ofstream file;
+int i;
+	h+=".txt";
+	file.open(h);
+	
+	vector <Robot_model> robot_models;
+	vector <Customer> customers;
+	vector <Head> head_parts;
+	vector <Sales_associate> sales_associate;
+	file<<"\nArm Parts/n;
+	while( arm_parts.name[i]!=NULL)
+	{
 
+	file<<( "<<i<<") "<<arm_parts.name[i]<<"\n";
+		i++
+	}
 	
-	
+	i=0;
+	file<<"\nTorso Parts\n;
+	while( torso_parts.name[i]!=NULL)
+	{
+
+	file<<( "<<i<<") "<<torso_parts.name[i]<<"\n";
+		i++
+	}
+	i=0;
+	file<<"\nLocomotor Parts\n;
+	while( locomotor_parts.name[i]!=NULL)
+	{
+
+	file<<( "<<i<<") "<<locomotor_parts.name[i]<<"\n";
+		i++
+	}
+	i=0;
+	file<<"Battery Parts\n";
+	while( battery_parts.name[i]!=NULL)
+	{
+
+	file<<( "<<i<<") "<<battery_parts.name[i]<<"\n";
+		i++
+	}
+	i=0;
+	file<<"\nHead Parts\n;
+	while( head_parts.name[i]!=NULL)
+	{
+
+	file<<( "<<i<<") "<<head_parts.name[i]<<"\n";
+		i++
+	}
+	file.close();
+		
 }
 
 void Shop:: open ()
