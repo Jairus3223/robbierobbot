@@ -503,8 +503,7 @@ int com;
 	orders.push_back(ordere);
 }
 void Shop:: save()
-{ 
-	string h=" Please enter a File name";
+{ /*string h=" Please enter a File name";
 	string name=(fl_input(h.c_str(),0));
 	ofstream file;
 int i;
@@ -556,7 +555,7 @@ int i;
 		i++
 	}
 	file.close();
-		
+	*/	
 }
 
 void Shop:: open ()
