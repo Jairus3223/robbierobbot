@@ -390,17 +390,17 @@ Robot_model h;
 
 	string named;
 	int model_numbers;
-	cout<<"What is this Model Name\n";
-	getline(cin,named);
-	cout<<"What is the Model number\n";
-	cin>>model_numbers;
-	cin.ignore();
+	string a="What is this Model Name\n";
+	named(fl_input(a.c_str));
+	string b="What is the Model number\n";
+	model_numbers==atoi(fl_input(b.c_str));
+	
 	for(i=0;i<arm_parts.size();i++)
 	{
 		cout<<"("<<i<<") "<<arm_parts[i].get_name()<<"\n";
 	}
-cout<<"Which part:\n";	
-	cin>>com;
+string c="Which part:\n";	
+	com=atoi(fl_input(c.c_str));
 	arm_parts[com].get_rob_part(ar);
 	
 	for(i=0;i<head_parts.size();i++)
@@ -409,15 +409,15 @@ cout<<"Which part:\n";
 	}
 	
 	
-	cout<<"Which part:\n";	
-	cin>>com;
+	string d="Which part:\n";	
+	com=atoi(fl_input(d.c_str));
 	head_parts[com].get_rob_part(hea);
 	for(i=0;i<locomotor_parts.size();i++)
 	{
 		cout<<"("<<i<<") "<<locomotor_parts[i].get_name()<<"\n";
 	}
-	cout<<"Which part:\n";	
-	cin>>com;
+	string e="Which part:\n";	
+	com=atoi(fl_input(e.c_str));
 	
 	locomotor_parts[com].get_rob_part(loco);
 	
@@ -426,8 +426,8 @@ cout<<"Which part:\n";
 		cout<<"("<<i<<") "<<battery_parts[i].get_name()<<"\n";
 	}
 	
-	cout<<"Which part:\n";	
-	cin>>com;
+	string f="Which part:\n";	
+com=atoi(fl_input(f.c_str));
 	battery_parts[i].get_rob_part(bat);
 	
 	
@@ -437,8 +437,8 @@ cout<<"Which part:\n";
 		cout<<"("<<i<<") "<<torso_parts[i].get_name()<<"\n";
 	}
 	
-	cout<<"Which part:\n";	
-	cin>>com;
+	string g="Which part:\n";	
+	com=atoi(fl_input(g.c_str));
 	torso_parts[com].get_rob_part(tor);
 
 	h.change_variables( hea,ar,loco,bat,tor,named,model_numbers);
