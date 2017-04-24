@@ -391,22 +391,32 @@ Robot_model h;
 	string named;
 	int model_numbers;
 	string a="What is this Model Name\n";
-	named(fl_input(a.c_str));
-	string b="What is the Model number\n";
-	model_numbers==atoi(fl_input(b.c_str));
-	
+	named=(fl_input(a.c_str));
+	string c="Which part:\n";
+	string b="Model Number";
 	for(i=0;i<arm_parts.size();i++)
 	{
-		cout<<"("<<i<<") "<<arm_parts[i].get_name()<<"\n";
+		c+="\n(";
+		c+=i;
+		c+=") ";
+		c+=arm_parts[i].get_name();
 	}
-string c="Which part:\n";	
-	com=atoi(fl_input(c.c_str));
-	arm_parts[com].get_rob_part(ar);
+
+ model_numbers==atoi(fl_input(b.c_str));
+ 
 	
+	string d="Which part";
 	for(i=0;i<head_parts.size();i++)
 	{
-		cout<<"("<<i<<") "<<head_parts[i].get_name()<<"\n";
+		d+="\n(";
+		d+=i;
+		d+=") ";
+		d+=head_parts[i].get_name();
+		
+		
 	}
+ com=atoi(fl_input(c.c_str));
+	arm_parts[com].get_rob_part(ar);
 	
 	
 	string d="Which part:\n";	
