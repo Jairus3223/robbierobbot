@@ -377,7 +377,7 @@ class Shop
 
 }; 
 
-void Shop::create_new_robot_model()
+vvoid Shop::create_new_robot_model()
 {int i;
 int com;
 double cost1,cost2,cost3,cost4,cost5;
@@ -391,10 +391,10 @@ Robot_model h;
 	string named;
 	int model_numbers;
 	string a="What is this Model Name\n";
-	named=(fl_input(a.c_str));
+	named=(fl_input(a.c_str(),0));
 	string c="Which part:\n";
 	string b="Model Number";
- model_numbers=atoi(fl_input(b.cstr));
+ model_numbers=atoi(fl_input(b.c_str(),0));
 	for(i=0;i<arm_parts.size();i++)
 	{
 		c+="\n(";
@@ -403,9 +403,9 @@ Robot_model h;
 		c+=arm_parts[i].get_name();
 	}
 
- model_numbers==atoi(fl_input(b.c_str));
+ model_numbers==atoi(fl_input(b.c_str(),0));
 
-  com=atoi(fl_input(c.c_str));
+  com=atoi(fl_input(c.c_str(),0));
 	arm_parts[com].get_rob_part(ar);
  
 	string d="Which part";
@@ -419,7 +419,7 @@ Robot_model h;
 		
 	}
 
-	com=atoi(fl_input(d.c_str));
+	com=atoi(fl_input(d.c_str(),0));
  head_parts[com].get_rob_part(hea);
 		
 	string e="Which part:\n";	
@@ -431,7 +431,7 @@ Robot_model h;
 		e+=locomotor_parts[i].get_name();
 	}
 	
- com=atoi(fl_input(e.c_str));
+ com=atoi(fl_input(e.c_str(),0));
  
  
  
@@ -447,7 +447,7 @@ Robot_model h;
 	}
 	
 		
-com=atoi(fl_input(f.c_str));
+com=atoi(fl_input(f.c_str(),0));
 	battery_parts[com].get_rob_part(bat);
 	
 	
@@ -461,7 +461,7 @@ com=atoi(fl_input(f.c_str));
 	}
 	
 		
-	com=atoi(fl_input(g.c_str));
+	com=atoi(fl_input(g.c_str(),0));
 	torso_parts[com].get_rob_part(tor);
 
 	h.change_variables( hea,ar,loco,bat,tor,named,model_numbers);
@@ -469,8 +469,6 @@ robot_models.push_back(h);
 
 
 }
-
-
 void Shop:: create_new_sales_associate()
 {
 Sales_associate sal;
