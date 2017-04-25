@@ -1,18 +1,19 @@
-CXXFLAGS = -std=c++11
-LDFLAGS = -L/usr/local/lib -lfltk -lXext -lX11 -lm
+CXXFLAGS = -w -std=c++11
+LDFLAGS = -L/usr/local/lib -lXext -lm -Wl -lfltk -lX11
 
-all: cli
+all: gui
 
 debug: CXXFLAGS += -g
-debug: cli
+debug: gui
 
-rebuild: clean cli
+rebuild: clean gui
 
 
 
+gui: hw7.cpp
+	$(CXX) $(CXXFLAGS) $(fltk-config --cxxflags) -o gui hw7.cpp
 cli: hw7.cpp
-	$(CXX) $(CXXFLAGS) $(fltk-config --cxxflags) -o cli hw7.cpp
+	$(CXX) $(CXXFLAGS) -o cli hw7.7
 
 clean:
-	-rm -f *.o  cli
-
+	-rm -f *.o gui cli
