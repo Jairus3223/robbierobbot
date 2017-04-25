@@ -394,60 +394,73 @@ Robot_model h;
 	named=(fl_input(a.c_str));
 	string c="Which part:\n";
 	string b="Model Number";
+ model_numbers=atoi(fl_input(b.cstr));
 	for(i=0;i<arm_parts.size();i++)
 	{
 		c+="\n(";
-		c+=i;
+		c+=to_string(i);
 		c+=") ";
 		c+=arm_parts[i].get_name();
 	}
 
  model_numbers==atoi(fl_input(b.c_str));
+
+  com=atoi(fl_input(c.c_str));
+	arm_parts[com].get_rob_part(ar);
  
-	
 	string d="Which part";
 	for(i=0;i<head_parts.size();i++)
 	{
 		d+="\n(";
-		d+=i;
+		d+=to_string(i);
 		d+=") ";
 		d+=head_parts[i].get_name();
 		
 		
 	}
- com=atoi(fl_input(c.c_str));
-	arm_parts[com].get_rob_part(ar);
-	
-	
-	string d="Which part:\n";	
+
 	com=atoi(fl_input(d.c_str));
-	head_parts[com].get_rob_part(hea);
+ head_parts[com].get_rob_part(hea);
+		
+	string e="Which part:\n";	
 	for(i=0;i<locomotor_parts.size();i++)
 	{
-		cout<<"("<<i<<") "<<locomotor_parts[i].get_name()<<"\n";
+		e+="\n(";
+		e=to_string(i);
+		e+=") ";
+		e+=locomotor_parts[i].get_name();
 	}
-	string e="Which part:\n";	
-	com=atoi(fl_input(e.c_str));
+	
+ com=atoi(fl_input(e.c_str));
+ 
+ 
+ 
 	
 	locomotor_parts[com].get_rob_part(loco);
-	
+	string f="Which part:\n";
 	for(i=0;i<battery_parts.size();i++)
 	{
-		cout<<"("<<i<<") "<<battery_parts[i].get_name()<<"\n";
+		f+="\n(";
+		f=to_string(i);
+		f+=") ";
+		f+=battery_parts[i].get_name();
 	}
 	
-	string f="Which part:\n";	
+		
 com=atoi(fl_input(f.c_str));
-	battery_parts[i].get_rob_part(bat);
+	battery_parts[com].get_rob_part(bat);
 	
 	
-	
+	string g="Which part:\n";
 	for(i=0;i<torso_parts.size();i++)
 	{
-		cout<<"("<<i<<") "<<torso_parts[i].get_name()<<"\n";
+		g+="\n(";
+		g=to_string(i);
+		g+=") ";
+		g=battery_parts[i].get_name();
 	}
 	
-	string g="Which part:\n";	
+		
 	com=atoi(fl_input(g.c_str));
 	torso_parts[com].get_rob_part(tor);
 
