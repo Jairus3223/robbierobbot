@@ -359,7 +359,23 @@ class Shop
 	vector <Sales_associate> sales_associate;
 	public:
 	 void create_new_robot_part();
-	 
+	string list_model()
+	 {
+	string menu;
+		 string s;
+		 int i;
+		 for (i=0;i<robot_models.size();i++)
+		 {
+		menu+="(";
+		 s=to_string(i);
+		menu+=s;
+		menu+=") "
+		menu+=robot_models[i].get_name();
+			 menu+="\n";
+			 
+	}
+		 return menu;
+	 }
 		 
 	
 		 //Need to implement the individual parts
@@ -377,8 +393,9 @@ class Shop
 
 }; 
 
-vvoid Shop::create_new_robot_model()
-{int i;
+void Shop::create_new_robot_model()
+{
+int i;
 int com;
 double cost1,cost2,cost3,cost4,cost5;
 Robot_part hea;
@@ -734,6 +751,14 @@ int Controller::exectcom(int command)
 		
 	}
 
+	else if(command==7)
+	{
+		string menu= shop.list_model();
+	fl_message_title("Models Names");
+	fl_message(menu.c_str());	
+		
+	}
+	
 	else
 	{
 		string error=" Invalid Command";
