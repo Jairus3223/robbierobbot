@@ -4,6 +4,7 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/fl_ask.H>
+#include <fstream>
 using namespace std;
 class Robot_part
 {
@@ -571,13 +572,13 @@ int com;
 	orders.push_back(ordere);
 }
 void Shop:: save()
-{ /*string h=" Please enter a File name";
+{ /string h=" Please enter a File name";
 	string name=(fl_input(h.c_str(),0));
 	ofstream file;
 int i;
 	h+=".txt";
 	file.open(h);
-	
+/*	
 	vector <Robot_model> robot_models;
 	vector <Customer> customers;
 	vector <Head> head_parts;
