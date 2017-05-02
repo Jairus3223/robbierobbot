@@ -730,6 +730,7 @@ Shop shop;
 
 void Controller::cmloop()
 {
+	fl_message_title("Robot Management System");
 	string menu=view.get_menu();
 	int ind = -1;
 while(ind !=0)
