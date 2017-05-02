@@ -822,8 +822,8 @@ int main()
 	Fl_Window win(1,1);
   win.show();
 	control.cmloop();
-	win->end();
-	win->show();
+	win.end();
+	win.show();
 	return (Fl::run());
 	
 	
