@@ -1,6 +1,5 @@
 CXXFLAGS = -w -std=c++11
-LDFLAGS = -L/usr/local/lib -lXext -lm -Wl -lfltk -lX11
-
+LDFLAGS = -L/usr/local/lib -lXext -lm -Wl,-Bsymbolic-functions -lfltk_images -lfltk -lX11
 all: gui
 
 debug: CXXFLAGS += -g
