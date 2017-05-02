@@ -4,6 +4,7 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/fl_ask.H>
+#include <FL/Fl_Input.H>
 #include <fstream>
 using namespace std;
 class Robot_part
@@ -238,17 +239,6 @@ class Robot_model
 	return name;
 	
 }
-	void get_info(string named,int model, Robot_part tor, Robot_part hea, Robot_part loco, Robot_part ar, Robot_part bat)
-	{
-		named=name;
-	model = model_number;
-		tor=torso;
-		hea=head;
-		loco=locomotor;
-		ar=arm;
-		bat=battery;
-		
-	}
 
 };
 	
@@ -310,7 +300,8 @@ string number;
 string email;
 int numb;
 cout<<"Please Enter Customer's Name:\n";
-cin>> name;
+getline(cin,name);
+cin.ignore();
 cout<<"Phone Number:\n";
 cin>>number;
 cout<<"Email:\n";
@@ -326,6 +317,13 @@ cin>>numb;
 {
 	return name;
 	
+}
+string get_info(string nam, int custom, string phone, string email)
+{
+nam=name;
+custom=customer_number;
+phone=phone_number;
+email=email_address;
 }
 };
 	
@@ -355,7 +353,6 @@ void set_variables(int order,string dat,Customer cus,Sales_associate sale,Robot_
 	cin>>status;
 	
 }
-	
 };
 
 
@@ -372,23 +369,7 @@ class Shop
 	vector <Sales_associate> sales_associate;
 	public:
 	 void create_new_robot_part();
-	string list_model()
-	 {
-	string menu;
-		 string s;
-		 int i;
-		 for (i=0;i<robot_models.size();i++)
-		 {
-		menu+="(";
-		 s=to_string(i);
-		menu+=s;
-		menu+=") "
-		menu+=robot_models[i].get_name();
-			 menu+="\n";
-			 
-	}
-		 return menu;
-	 }
+	 
 		 
 	
 		 //Need to implement the individual parts
@@ -399,25 +380,7 @@ class Shop
 	
 	 void create_new_sales_associate();
 	 void create_new_order();	 
-void look(int com)
-{
-string named;
-			int model; Robot_part tor; Robot_part hea; Robot_part loco; Robot_part ar; Robot_part bat;
-	robot_models[com].get_info(named,model,tor,hea,loco,ar,bat);
-	string head_name=hea.get_name();
-	string torso_name=tor.get_name();
-	string locomotor_name=loco.get_name();
-	string arm_name=ar.get_name();
-	string battery_name=bat.get_name();
-	string info=" ";
-	info+="Name: "+named+"\n Model Number: "+model;
-	info+="\n Head: "+head_name + "\n Torso: "+torso_name;
-	info+="\n Locomotor: "+locomotr_name +" \n Arm: "+arm_name;
-	info+="\n Battery: "+battery_name;
-	fl_message_title("Model Info");
-	fl_messsage(info.c_str());
-	
-}
+
 	 void save();
 	 void open();
 
@@ -425,8 +388,7 @@ string named;
 }; 
 
 void Shop::create_new_robot_model()
-{
-int i;
+{int i;
 int com;
 double cost1,cost2,cost3,cost4,cost5;
 Robot_part hea;
@@ -517,6 +479,8 @@ robot_models.push_back(h);
 
 
 }
+
+
 void Shop:: create_new_sales_associate()
 {
 Sales_associate sal;
@@ -572,17 +536,38 @@ int com;
 	orders.push_back(ordere);
 }
 void Shop:: save()
-{ /string h=" Please enter a File name";
+{ string h=" Please enter a File name";
 	string name=(fl_input(h.c_str(),0));
-	ofstream file;
+	ofstream myfile;
 int i;
-	h+=".txt";
-	file.open(h);
-/*	
-	vector <Robot_model> robot_models;
-	vector <Customer> customers;
-	vector <Head> head_parts;
-	vector <Sales_associate> sales_associate;
+string named= customers[i].get_name();
+	name+=".txt";
+	myfile.open(name);
+myfile<<"\n Customers\n";
+int stop;
+while(named.empty()!=0||stop!=0)
+{
+if(name.empty()==0)
+{
+stop=0;
+return;
+}
+else
+{
+string nam;
+ int custom;
+string phone;
+string email;
+customers[i].get_info(nam,  custom,  phone,  email);
+myfile<<"Name: "<< name<<"\n Customer Number: "<<custom<<"\n Phone number: "<<phone<<"\nEmail: "<< email<<"\n"; 
+
+i++;
+}
+}
+
+/*
+	
+	
 	file<<"\nArm Parts/n;
 	while( arm_parts.name[i]!=NULL)
 	{
@@ -622,15 +607,15 @@ int i;
 
 	file<<( "<<i<<") "<<head_parts.get_name[i]<<"\n";
 		i++
-	}
-	file.close();
-	*/	
+	}*/
+	myfile.close();
+		
 }
 
 void Shop:: open ()
 {
 	
-	
+	cout<<"Loading unavailable\n";
 	
 	
 }
@@ -731,13 +716,14 @@ Shop shop;
 
 void Controller::cmloop()
 {
-	fl_message_title("Robot Management System");
 	string menu=view.get_menu();
 	int ind = -1;
 while(ind !=0)
 {
 ind= atoi(fl_input(menu.c_str(),0));
-
+if(ind==0)
+{return;
+}
 exectcom(ind);
 }	
 }
@@ -783,30 +769,6 @@ int Controller::exectcom(int command)
 		
 	}
 
-	else if(command==7)
-	{
-		string menu= shop.list_model();
-	fl_message_title("Models Names");
-	fl_message(menu.c_str());	
-		string question= " What Model do  you want to look at?";
-		int com=-2;
-		while(com!=-1)
-		{
-			com= atoi(fl_input(question.c_str(),0));
-			if(com>=0)
-			{
-			shop.look(com);
-			
-			}
-			else
-			{
-				com=-1;
-			}
-		}
-		
-		
-	}
-	
 	else
 	{
 		string error=" Invalid Command";
@@ -821,12 +783,12 @@ int Controller::exectcom(int command)
 int main()
 {
 	Controller control;
-	Fl_Window win(1,1);
+	Fl_Window win(10,10);
   win.show();
 	control.cmloop();
 	win.end();
-	win.show();
-	return (Fl::run());
+win.show();
+return(Fl::run());
 	
 	
 }
