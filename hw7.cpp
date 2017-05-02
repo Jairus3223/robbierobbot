@@ -237,6 +237,17 @@ class Robot_model
 	return name;
 	
 }
+	void get_info(string named,int model, Robot_part tor, Robot_part hea, Robot_part loco, Robot_part ar, Robot_part bat)
+	{
+		named=name;
+	model = model_number;
+		tor=torso;
+		hea=head;
+		loco=locomotor;
+		ar=arm;
+		bat=battery;
+		
+	}
 
 };
 	
@@ -343,6 +354,7 @@ void set_variables(int order,string dat,Customer cus,Sales_associate sale,Robot_
 	cin>>status;
 	
 }
+	
 };
 
 
@@ -386,7 +398,25 @@ class Shop
 	
 	 void create_new_sales_associate();
 	 void create_new_order();	 
-
+void look(int com)
+{
+string named;
+			int model; Robot_part tor; Robot_part hea; Robot_part loco; Robot_part ar; Robot_part bat;
+	robot_models[com].get_info(named,model,tor,hea,loco,ar,bat);
+	string head_name=hea.get_name();
+	string torso_name=tor.get_name();
+	string locomotor_name=loco.get_name();
+	string arm_name=ar.get_name();
+	string battery_name=bat.get_name();
+	string info=" ";
+	info+="Name: "+named+"\n Model Number: "+model;
+	info+="\n Head: "+head_name + "\n Torso: "+torso_name;
+	info+="\n Locomotor: "+locomotr_name +" \n Arm: "+arm_name;
+	info+="\n Battery: "+battery_name;
+	fl_message_title("Model Info");
+	fl_messsage(info.c_str());
+	
+}
 	 void save();
 	 void open();
 
@@ -756,6 +786,22 @@ int Controller::exectcom(int command)
 		string menu= shop.list_model();
 	fl_message_title("Models Names");
 	fl_message(menu.c_str());	
+		string question= " What Model do  you want to look at?";
+		int com=-2;
+		while(com!=-1)
+		{
+			com= atoi(fl_input(question.c_str(),0));
+			if(com>=0)
+			{
+			shop.look(com);
+			
+			}
+			else
+			{
+				com=-1;
+			}
+		}
+		
 		
 	}
 	
