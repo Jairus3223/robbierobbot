@@ -540,13 +540,14 @@ void Shop:: save()
 	string name=(fl_input(h.c_str(),0));
 	ofstream myfile;
 int i;
-string named= customers[i].get_name();
+string named;
 	name+=".txt";
 	myfile.open(name);
 myfile<<"\n Customers\n";
 int stop;
-while(named.empty()!=0||stop!=0)
+while(stop!=0)
 {
+	named=customers[i].get_named();
 if(name.empty()==0)
 {
 stop=0;
